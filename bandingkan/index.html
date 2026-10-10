@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bandingkan | Metro Cimahi Motor</title>
+<link rel="icon" href="https://eternaledo.github.io/metro-cimahi-motor/images/ikon/monogram.svg" type="image/svg+xml">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preload" as="style" href="https://eternaledo.github.io/metro-cimahi-motor/build/assets/app-C-hbG7D2.css" /><link rel="modulepreload" as="script" href="https://eternaledo.github.io/metro-cimahi-motor/build/assets/app-nDZhw50O.js" /><link rel="stylesheet" href="https://eternaledo.github.io/metro-cimahi-motor/build/assets/app-C-hbG7D2.css" /><script type="module" src="https://eternaledo.github.io/metro-cimahi-motor/build/assets/app-nDZhw50O.js"></script></head>
+
+<body  data-statis  class="bg-white text-arang font-sans antialiased min-h-screen flex flex-col">
+    <a href="#isi" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-arang focus:px-4 focus:py-2 focus:text-white">Langsung ke isi</a>
+
+    
+    <header x-data="{ menu: false, cari: false, kecil: false }" @keydown.escape.window="menu = false; cari = false"
+        x-init="kecil = scrollY > 80" @scroll.window.passive="kecil = scrollY > (kecil ? 24 : 80)" :data-kecil="kecil"
+        class="kepala sticky top-0 z-30 border-b border-garis bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85">
+        <div class="kepala-baris wadah grid grid-cols-[1fr_auto] items-center gap-6 xl:grid-cols-[1fr_auto_1fr]">
+            
+            <a href="https://eternaledo.github.io/metro-cimahi-motor/" class="flex items-center gap-2.5 justify-self-start" aria-label="Metro Cimahi Motor, ke beranda">
+                <img src="https://eternaledo.github.io/metro-cimahi-motor/images/ikon/monogram.svg" alt="" width="28" height="30" class="kepala-logo">
+                <span class="flex flex-col gap-0.5 leading-none">
+                    <span class="kepala-nama font-bold tracking-[-0.01em]">METRO CIMAHI</span>
+                    <span class="kepala-sub font-medium tracking-[0.32em]">MOTOR</span>
+                </span>
+            </a>
+
+            
+            <nav class="kepala-menu hidden xl:flex items-center" aria-label="Menu utama">
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/"                         class="relative py-2 transition-colors text-abu hover:text-arang
+                            after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:bg-arang after:transition-transform after:duration-300 after:scale-x-0 hover:after:scale-x-100">
+                        Beranda
+                                            </a>
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/katalog/"                         class="relative py-2 transition-colors text-abu hover:text-arang
+                            after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:bg-arang after:transition-transform after:duration-300 after:scale-x-0 hover:after:scale-x-100">
+                        Katalog
+                                            </a>
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/bandingkan/"  aria-current="page"                         class="relative py-2 transition-colors font-semibold text-arang
+                            after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:bg-arang after:transition-transform after:duration-300 after:scale-x-100">
+                        Bandingkan
+                                                    <span data-jumlah-banding hidden class="angka ml-1 inline-flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-zaitun px-1 text-[10px] font-semibold text-white"></span>
+                                            </a>
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/dealer/"                         class="relative py-2 transition-colors text-abu hover:text-arang
+                            after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:bg-arang after:transition-transform after:duration-300 after:scale-x-0 hover:after:scale-x-100">
+                        Dealer
+                                            </a>
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/artikel/"                         class="relative py-2 transition-colors text-abu hover:text-arang
+                            after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:bg-arang after:transition-transform after:duration-300 after:scale-x-0 hover:after:scale-x-100">
+                        Artikel
+                                            </a>
+                            </nav>
+
+            
+            <div class="flex items-center justify-self-end gap-4 sm:gap-6">
+                <button type="button" @click="cari = ! cari; menu = false; $nextTick(() => cari && $refs.kolomCari.focus())" :aria-expanded="cari"
+                    aria-controls="panel-cari" aria-label="Cari motor" class="kepala-ikon grid place-items-center rounded text-arang hover:bg-kertas">
+                    <img src="https://eternaledo.github.io/metro-cimahi-motor/images/ikon/search.svg" alt="" width="20" height="20" class="h-5 w-5">
+                </button>
+
+                <a href="https://eternaledo.github.io/metro-cimahi-motor/dealer/"  class="kepala-tombol tombol hidden sm:inline-flex">
+                    Hubungi kami
+                    <img src="https://eternaledo.github.io/metro-cimahi-motor/images/ikon/message-circle-terang.svg" alt="" width="18" height="18" class="h-[18px] w-[18px]">
+                </a>
+
+                <div class="hidden">
+                                                        </div>
+
+                <button type="button" @click="menu = ! menu; cari = false" :aria-expanded="menu" aria-controls="menu-ponsel" aria-label="Buka menu"
+                    class="kepala-ikon grid place-items-center rounded hover:bg-kertas xl:hidden">
+                    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+                        <path x-show="! menu" d="M4 7h16M4 12h16M4 17h16" />
+                        <path x-cloak x-show="menu" d="M6 6l12 12M18 6L6 18" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        
+        <div id="panel-cari" x-cloak x-show="cari" x-transition.opacity class="border-t border-garis bg-white">
+            <form action="https://eternaledo.github.io/metro-cimahi-motor/katalog/" method="GET" class="wadah flex items-center gap-3 py-4" role="search">
+                <label for="cari-motor" class="sr-only">Cari nama motor</label>
+                <input x-ref="kolomCari" type="search" id="cari-motor" name="q" value="" placeholder="Cari motor, misalnya Aerox atau R15"
+                    class="isian mt-0 flex-1">
+                <button type="submit" class="tombol">Cari</button>
+            </form>
+        </div>
+
+        
+        <div id="menu-ponsel" x-cloak x-show="menu" x-transition.opacity class="border-t border-garis bg-white xl:hidden">
+            <nav class="wadah flex flex-col py-3" aria-label="Menu utama">
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/"                         class="flex items-center justify-between border-b border-garis py-3.5 text-abu">
+                        Beranda
+                                            </a>
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/katalog/"                         class="flex items-center justify-between border-b border-garis py-3.5 text-abu">
+                        Katalog
+                                            </a>
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/bandingkan/"  aria-current="page"                         class="flex items-center justify-between border-b border-garis py-3.5 font-semibold">
+                        Bandingkan
+                                                    <span data-jumlah-banding hidden class="angka inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-zaitun px-1.5 text-xs text-white"></span>
+                                            </a>
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/dealer/"                         class="flex items-center justify-between border-b border-garis py-3.5 text-abu">
+                        Dealer
+                                            </a>
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/artikel/"                         class="flex items-center justify-between border-b border-garis py-3.5 text-abu">
+                        Artikel
+                                            </a>
+                                <div class="flex flex-wrap items-center gap-3 pt-5 pb-2">
+                    <a href="https://eternaledo.github.io/metro-cimahi-motor/dealer/"  class="tombol sm:hidden">
+                        Hubungi kami
+                        <img src="https://eternaledo.github.io/metro-cimahi-motor/images/ikon/message-circle-terang.svg" alt="" width="18" height="18" class="h-[18px] w-[18px]">
+                    </a>
+                                                        </div>
+            </nav>
+        </div>
+    </header>
+
+    
+    <div id="pesan-statis" class="wadah mt-5" role="status" hidden>
+        <p class="flex items-center gap-3 rounded border px-4 py-3 text-sm"></p>
+    </div>
+
+    
+    <main id="isi" class="flex-1">
+        <div class="wadah pt-12">
+        <p class="penanda">Bandingkan</p>
+        <h1 class="judul-bagian mt-4">Bandingkan motor.</h1>
+
+                    <div id="banding-kosong" class="py-12 max-w-xl" hidden>
+    <p class="text-lg">Belum ada motor yang dipilih. Tekan tombol "Bandingkan" pada motor di katalog, paling banyak 3 motor.</p>
+    <a href="https://eternaledo.github.io/metro-cimahi-motor/katalog/" class="inline-block mt-6 tombol">Pilih motor di katalog</a>
+</div>
+
+<div id="banding-isi" hidden>
+    <p id="banding-catatan" class="mt-3 text-abu">Baris bertanda garis hijau berisi nilai yang berbeda antar motor.</p>
+    <div class="mt-8 overflow-x-auto">
+        <table id="tabel-banding" class="w-full min-w-[44rem] text-left table-fixed"></table>
+    </div>
+</div>
+
+    <template data-kepala="nmax-155-connected">
+        <th scope="col" class="px-3 pb-6 font-normal align-top">
+            <a href="https://eternaledo.github.io/metro-cimahi-motor/motor/nmax-155-connected/" class="block">
+                <div class="bg-white border border-garis rounded-lg aspect-[5/3] flex items-center justify-center p-3">
+                    <img src="https://eternaledo.github.io/metro-cimahi-motor/storage/motor/nmax-155-connected-hitam-doff.png" alt="NMAX 155 Connected" class="object-contain w-full h-full">
+                </div>
+                <span class="block mt-3 text-sm text-redup">Maxi</span>
+                <span class="block text-2xl font-semibold leading-tight">NMAX 155 Connected</span>
+            </a>
+            <span class="angka block mt-1 font-semibold">Rp31.500.000</span>
+            <button type="button" data-hapus-banding="nmax-155-connected" class="mt-3 text-sm text-merah underline underline-offset-4">Hapus</button>
+        </th>
+    </template>
+    <template data-kepala="xmax-250-connected">
+        <th scope="col" class="px-3 pb-6 font-normal align-top">
+            <a href="https://eternaledo.github.io/metro-cimahi-motor/motor/xmax-250-connected/" class="block">
+                <div class="bg-white border border-garis rounded-lg aspect-[5/3] flex items-center justify-center p-3">
+                    <img src="https://eternaledo.github.io/metro-cimahi-motor/storage/motor/xmax-250-connected-hitam-doff.png" alt="XMAX 250 Connected" class="object-contain w-full h-full">
+                </div>
+                <span class="block mt-3 text-sm text-redup">Maxi</span>
+                <span class="block text-2xl font-semibold leading-tight">XMAX 250 Connected</span>
+            </a>
+            <span class="angka block mt-1 font-semibold">Rp66.500.000</span>
+            <button type="button" data-hapus-banding="xmax-250-connected" class="mt-3 text-sm text-merah underline underline-offset-4">Hapus</button>
+        </th>
+    </template>
+    <template data-kepala="aerox-155-connected">
+        <th scope="col" class="px-3 pb-6 font-normal align-top">
+            <a href="https://eternaledo.github.io/metro-cimahi-motor/motor/aerox-155-connected/" class="block">
+                <div class="bg-white border border-garis rounded-lg aspect-[5/3] flex items-center justify-center p-3">
+                    <img src="https://eternaledo.github.io/metro-cimahi-motor/storage/motor/aerox-155-connected-utama.webp" alt="Aerox 155 Connected" class="object-contain w-full h-full">
+                </div>
+                <span class="block mt-3 text-sm text-redup">Maxi</span>
+                <span class="block text-2xl font-semibold leading-tight">Aerox 155 Connected</span>
+            </a>
+            <span class="angka block mt-1 font-semibold">Rp28.500.000</span>
+            <button type="button" data-hapus-banding="aerox-155-connected" class="mt-3 text-sm text-merah underline underline-offset-4">Hapus</button>
+        </th>
+    </template>
+    <template data-kepala="fazzio-hybrid-connected">
+        <th scope="col" class="px-3 pb-6 font-normal align-top">
+            <a href="https://eternaledo.github.io/metro-cimahi-motor/motor/fazzio-hybrid-connected/" class="block">
+                <div class="bg-white border border-garis rounded-lg aspect-[5/3] flex items-center justify-center p-3">
+                    <img src="https://eternaledo.github.io/metro-cimahi-motor/storage/motor/fazzio-hybrid-connected-utama.webp" alt="Fazzio Hybrid Connected" class="object-contain w-full h-full">
+                </div>
+                <span class="block mt-3 text-sm text-redup">Classy</span>
+                <span class="block text-2xl font-semibold leading-tight">Fazzio Hybrid Connected</span>
+            </a>
+            <span class="angka block mt-1 font-semibold">Rp22.500.000</span>
+            <button type="button" data-hapus-banding="fazzio-hybrid-connected" class="mt-3 text-sm text-merah underline underline-offset-4">Hapus</button>
+        </th>
+    </template>
+    <template data-kepala="r15-connected">
+        <th scope="col" class="px-3 pb-6 font-normal align-top">
+            <a href="https://eternaledo.github.io/metro-cimahi-motor/motor/r15-connected/" class="block">
+                <div class="bg-white border border-garis rounded-lg aspect-[5/3] flex items-center justify-center p-3">
+                    <img src="https://eternaledo.github.io/metro-cimahi-motor/storage/motor/r15-connected-utama.webp" alt="R15 Connected" class="object-contain w-full h-full">
+                </div>
+                <span class="block mt-3 text-sm text-redup">Sport</span>
+                <span class="block text-2xl font-semibold leading-tight">R15 Connected</span>
+            </a>
+            <span class="angka block mt-1 font-semibold">Rp39.500.000</span>
+            <button type="button" data-hapus-banding="r15-connected" class="mt-3 text-sm text-merah underline underline-offset-4">Hapus</button>
+        </th>
+    </template>
+    <template data-kepala="mt-15">
+        <th scope="col" class="px-3 pb-6 font-normal align-top">
+            <a href="https://eternaledo.github.io/metro-cimahi-motor/motor/mt-15/" class="block">
+                <div class="bg-white border border-garis rounded-lg aspect-[5/3] flex items-center justify-center p-3">
+                    <img src="https://eternaledo.github.io/metro-cimahi-motor/storage/motor/mt-15-utama.png" alt="MT-15" class="object-contain w-full h-full">
+                </div>
+                <span class="block mt-3 text-sm text-redup">Sport</span>
+                <span class="block text-2xl font-semibold leading-tight">MT-15</span>
+            </a>
+            <span class="angka block mt-1 font-semibold">Rp38.500.000</span>
+            <button type="button" data-hapus-banding="mt-15" class="mt-3 text-sm text-merah underline underline-offset-4">Hapus</button>
+        </th>
+    </template>
+    <template data-kepala="r25">
+        <th scope="col" class="px-3 pb-6 font-normal align-top">
+            <a href="https://eternaledo.github.io/metro-cimahi-motor/motor/r25/" class="block">
+                <div class="bg-white border border-garis rounded-lg aspect-[5/3] flex items-center justify-center p-3">
+                    <img src="https://eternaledo.github.io/metro-cimahi-motor/storage/motor/r25-utama.png" alt="R25" class="object-contain w-full h-full">
+                </div>
+                <span class="block mt-3 text-sm text-redup">Sport</span>
+                <span class="block text-2xl font-semibold leading-tight">R25</span>
+            </a>
+            <span class="angka block mt-1 font-semibold">Rp63.500.000</span>
+            <button type="button" data-hapus-banding="r25" class="mt-3 text-sm text-merah underline underline-offset-4">Hapus</button>
+        </th>
+    </template>
+    <template data-kepala="xsr-155">
+        <th scope="col" class="px-3 pb-6 font-normal align-top">
+            <a href="https://eternaledo.github.io/metro-cimahi-motor/motor/xsr-155/" class="block">
+                <div class="bg-white border border-garis rounded-lg aspect-[5/3] flex items-center justify-center p-3">
+                    <img src="https://eternaledo.github.io/metro-cimahi-motor/storage/motor/xsr-155-utama.webp" alt="XSR 155" class="object-contain w-full h-full">
+                </div>
+                <span class="block mt-3 text-sm text-redup">Sport</span>
+                <span class="block text-2xl font-semibold leading-tight">XSR 155</span>
+            </a>
+            <span class="angka block mt-1 font-semibold">Rp38.000.000</span>
+            <button type="button" data-hapus-banding="xsr-155" class="mt-3 text-sm text-merah underline underline-offset-4">Hapus</button>
+        </th>
+    </template>
+    <template data-kepala="mx-king-150">
+        <th scope="col" class="px-3 pb-6 font-normal align-top">
+            <a href="https://eternaledo.github.io/metro-cimahi-motor/motor/mx-king-150/" class="block">
+                <div class="bg-white border border-garis rounded-lg aspect-[5/3] flex items-center justify-center p-3">
+                    <img src="https://eternaledo.github.io/metro-cimahi-motor/storage/motor/mx-king-150-utama.webp" alt="MX King 150" class="object-contain w-full h-full">
+                </div>
+                <span class="block mt-3 text-sm text-redup">Moped</span>
+                <span class="block text-2xl font-semibold leading-tight">MX King 150</span>
+            </a>
+            <span class="angka block mt-1 font-semibold">Rp26.500.000</span>
+            <button type="button" data-hapus-banding="mx-king-150" class="mt-3 text-sm text-merah underline underline-offset-4">Hapus</button>
+        </th>
+    </template>
+    <template data-kepala="jupiter-z1">
+        <th scope="col" class="px-3 pb-6 font-normal align-top">
+            <a href="https://eternaledo.github.io/metro-cimahi-motor/motor/jupiter-z1/" class="block">
+                <div class="bg-white border border-garis rounded-lg aspect-[5/3] flex items-center justify-center p-3">
+                    <img src="https://eternaledo.github.io/metro-cimahi-motor/storage/motor/jupiter-z1-utama.webp" alt="Jupiter Z1" class="object-contain w-full h-full">
+                </div>
+                <span class="block mt-3 text-sm text-redup">Moped</span>
+                <span class="block text-2xl font-semibold leading-tight">Jupiter Z1</span>
+            </a>
+            <span class="angka block mt-1 font-semibold">Rp19.500.000</span>
+            <button type="button" data-hapus-banding="jupiter-z1" class="mt-3 text-sm text-merah underline underline-offset-4">Hapus</button>
+        </th>
+    </template>
+
+<template id="kepala-kosong">
+    <td class="px-3 pb-6 align-top">
+        <a href="https://eternaledo.github.io/metro-cimahi-motor/katalog/"
+            class="flex items-center justify-center aspect-[5/3] rounded-lg border border-dashed border-garis text-redup font-medium hover:border-arang hover:text-arang">
+            Tambah motor
+        </a>
+    </td>
+</template>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const NILAI = JSON.parse('{\u0022nmax-155-connected\u0022:{\u00221\u0022:\u00224-langkah, SOHC, 4 katup, VVA, berpendingin cairan\u0022,\u00222\u0022:\u0022155 cc\u0022,\u00223\u0022:\u002211,3 kW \\\/ 8.000 rpm\u0022,\u00224\u0022:\u002214,2 Nm \\\/ 6.500 rpm\u0022,\u00225\u0022:\u0022Otomatis (CVT)\u0022,\u00226\u0022:\u0022Fuel injection\u0022,\u00227\u0022:\u00221.935 \\u00d7 740 \\u00d7 1.200 mm\u0022,\u00228\u0022:\u0022770 mm\u0022,\u00229\u0022:\u0022131 kg\u0022,\u002210\u0022:\u00227,1 L\u0022,\u002211\u0022:\u0022Teleskopik\u0022,\u002212\u0022:\u0022Suspensi ganda sub-tank\u0022,\u002213\u0022:\u0022Cakram hidrolik, ABS\u0022,\u002214\u0022:\u0022Cakram hidrolik, ABS\u0022,\u002215\u0022:\u0022110\\\/70-13\u0022,\u002216\u0022:\u0022130\\\/70-13\u0022},\u0022xmax-250-connected\u0022:{\u00221\u0022:\u00224-langkah, SOHC, 4 katup, berpendingin cairan\u0022,\u00222\u0022:\u0022250 cc\u0022,\u00223\u0022:\u002216,8 kW \\\/ 7.000 rpm\u0022,\u00224\u0022:\u002224,3 Nm \\\/ 5.500 rpm\u0022,\u00225\u0022:\u0022Otomatis (CVT)\u0022,\u00226\u0022:\u0022Fuel injection\u0022,\u00227\u0022:\u00222.180 \\u00d7 795 \\u00d7 1.460 mm\u0022,\u00228\u0022:\u0022795 mm\u0022,\u00229\u0022:\u0022181 kg\u0022,\u002210\u0022:\u002213 L\u0022,\u002211\u0022:\u0022Teleskopik\u0022,\u002212\u0022:\u0022Suspensi ganda\u0022,\u002213\u0022:\u0022Cakram hidrolik, ABS\u0022,\u002214\u0022:\u0022Cakram hidrolik, ABS\u0022,\u002215\u0022:\u0022120\\\/70-15\u0022,\u002216\u0022:\u0022140\\\/70-14\u0022},\u0022aerox-155-connected\u0022:{\u00221\u0022:\u00224-langkah, SOHC, 4 katup, VVA, berpendingin cairan\u0022,\u00222\u0022:\u0022155 cc\u0022,\u00223\u0022:\u002211,3 kW \\\/ 8.000 rpm\u0022,\u00224\u0022:\u002213,9 Nm \\\/ 6.500 rpm\u0022,\u00225\u0022:\u0022Otomatis (CVT)\u0022,\u00226\u0022:\u0022Fuel injection\u0022,\u00227\u0022:\u00221.980 \\u00d7 700 \\u00d7 1.150 mm\u0022,\u00228\u0022:\u0022790 mm\u0022,\u00229\u0022:\u0022125 kg\u0022,\u002210\u0022:\u00225,5 L\u0022,\u002211\u0022:\u0022Teleskopik\u0022,\u002212\u0022:\u0022Suspensi ganda\u0022,\u002213\u0022:\u0022Cakram hidrolik\u0022,\u002214\u0022:\u0022Tromol\u0022,\u002215\u0022:\u0022110\\\/80-14\u0022,\u002216\u0022:\u0022140\\\/70-14\u0022},\u0022fazzio-hybrid-connected\u0022:{\u00221\u0022:\u00224-langkah, SOHC, 2 katup, berpendingin udara\u0022,\u00222\u0022:\u0022125 cc\u0022,\u00223\u0022:\u00226,2 kW \\\/ 6.500 rpm\u0022,\u00224\u0022:\u002210,6 Nm \\\/ 4.500 rpm\u0022,\u00225\u0022:\u0022Otomatis (CVT)\u0022,\u00226\u0022:\u0022Fuel injection\u0022,\u00227\u0022:\u00221.820 \\u00d7 685 \\u00d7 1.125 mm\u0022,\u00228\u0022:\u0022750 mm\u0022,\u00229\u0022:\u002295 kg\u0022,\u002210\u0022:\u00225,1 L\u0022,\u002211\u0022:\u0022Teleskopik\u0022,\u002212\u0022:\u0022Suspensi tunggal\u0022,\u002213\u0022:\u0022Cakram hidrolik\u0022,\u002214\u0022:\u0022Tromol\u0022,\u002215\u0022:\u0022110\\\/70-12\u0022,\u002216\u0022:\u0022110\\\/70-12\u0022},\u0022r15-connected\u0022:{\u00221\u0022:\u00224-langkah, SOHC, 4 katup, VVA, berpendingin cairan\u0022,\u00222\u0022:\u0022155 cc\u0022,\u00223\u0022:\u002214,2 kW \\\/ 10.000 rpm\u0022,\u00224\u0022:\u002214,7 Nm \\\/ 8.500 rpm\u0022,\u00225\u0022:\u0022Manual 6-percepatan\u0022,\u00226\u0022:\u0022Fuel injection\u0022,\u00227\u0022:\u00221.990 \\u00d7 725 \\u00d7 1.135 mm\u0022,\u00228\u0022:\u0022815 mm\u0022,\u00229\u0022:\u0022137 kg\u0022,\u002210\u0022:\u002211 L\u0022,\u002211\u0022:\u0022Teleskopik terbalik (upside down)\u0022,\u002212\u0022:\u0022Lengan ayun, suspensi monocross\u0022,\u002213\u0022:\u0022Cakram hidrolik\u0022,\u002214\u0022:\u0022Cakram hidrolik\u0022,\u002215\u0022:\u0022100\\\/80-17\u0022,\u002216\u0022:\u0022140\\\/70-17\u0022},\u0022mt-15\u0022:{\u00221\u0022:\u00224-langkah, SOHC, 4 katup, VVA, berpendingin cairan\u0022,\u00222\u0022:\u0022155 cc\u0022,\u00223\u0022:\u002214,2 kW \\\/ 10.000 rpm\u0022,\u00224\u0022:\u002214,7 Nm \\\/ 8.500 rpm\u0022,\u00225\u0022:\u0022Manual 6-percepatan\u0022,\u00226\u0022:\u0022Fuel injection\u0022,\u00227\u0022:\u00221.965 \\u00d7 800 \\u00d7 1.065 mm\u0022,\u00228\u0022:\u0022810 mm\u0022,\u00229\u0022:\u0022133 kg\u0022,\u002210\u0022:\u002210,4 L\u0022,\u002211\u0022:\u0022Teleskopik terbalik (upside down)\u0022,\u002212\u0022:\u0022Lengan ayun, suspensi monocross\u0022,\u002213\u0022:\u0022Cakram hidrolik\u0022,\u002214\u0022:\u0022Cakram hidrolik\u0022,\u002215\u0022:\u0022110\\\/70-17\u0022,\u002216\u0022:\u0022140\\\/70-17\u0022},\u0022r25\u0022:{\u00221\u0022:\u00224-langkah, DOHC, 8 katup, 2 silinder, berpendingin cairan\u0022,\u00222\u0022:\u0022250 cc\u0022,\u00223\u0022:\u002226,5 kW \\\/ 12.000 rpm\u0022,\u00224\u0022:\u002223,6 Nm \\\/ 10.000 rpm\u0022,\u00225\u0022:\u0022Manual 6-percepatan\u0022,\u00226\u0022:\u0022Fuel injection\u0022,\u00227\u0022:\u00222.090 \\u00d7 720 \\u00d7 1.135 mm\u0022,\u00228\u0022:\u0022780 mm\u0022,\u00229\u0022:\u0022166 kg\u0022,\u002210\u0022:\u002214 L\u0022,\u002211\u0022:\u0022Teleskopik terbalik (upside down)\u0022,\u002212\u0022:\u0022Lengan ayun, suspensi monocross\u0022,\u002213\u0022:\u0022Cakram hidrolik\u0022,\u002214\u0022:\u0022Cakram hidrolik\u0022,\u002215\u0022:\u0022110\\\/70-17\u0022,\u002216\u0022:\u0022140\\\/70-17\u0022},\u0022xsr-155\u0022:{\u00221\u0022:\u00224-langkah, SOHC, 4 katup, VVA, berpendingin cairan\u0022,\u00222\u0022:\u0022155 cc\u0022,\u00223\u0022:\u002214,2 kW \\\/ 10.000 rpm\u0022,\u00224\u0022:\u002214,7 Nm \\\/ 8.500 rpm\u0022,\u00225\u0022:\u0022Manual 6-percepatan\u0022,\u00226\u0022:\u0022Fuel injection\u0022,\u00227\u0022:\u00222.007 \\u00d7 804 \\u00d7 1.080 mm\u0022,\u00228\u0022:\u0022810 mm\u0022,\u00229\u0022:\u0022134 kg\u0022,\u002210\u0022:\u002210,4 L\u0022,\u002211\u0022:\u0022Teleskopik terbalik (upside down)\u0022,\u002212\u0022:\u0022Lengan ayun, suspensi monocross\u0022,\u002213\u0022:\u0022Cakram hidrolik\u0022,\u002214\u0022:\u0022Cakram hidrolik\u0022,\u002215\u0022:\u0022110\\\/70-17\u0022,\u002216\u0022:\u0022140\\\/70-17\u0022},\u0022mx-king-150\u0022:{\u00221\u0022:\u00224-langkah, SOHC, 4 katup, berpendingin cairan\u0022,\u00222\u0022:\u0022150 cc\u0022,\u00223\u0022:\u002211,3 kW \\\/ 8.500 rpm\u0022,\u00224\u0022:\u002213,8 Nm \\\/ 7.000 rpm\u0022,\u00225\u0022:\u0022Manual 5-percepatan\u0022,\u00226\u0022:\u0022Fuel injection\u0022,\u00227\u0022:\u00221.985 \\u00d7 670 \\u00d7 1.100 mm\u0022,\u00228\u0022:\u0022780 mm\u0022,\u00229\u0022:\u0022118 kg\u0022,\u002210\u0022:\u00224,2 L\u0022,\u002211\u0022:\u0022Teleskopik\u0022,\u002212\u0022:\u0022Lengan ayun, suspensi monocross\u0022,\u002213\u0022:\u0022Cakram hidrolik\u0022,\u002214\u0022:\u0022Cakram hidrolik\u0022,\u002215\u0022:\u002290\\\/80-17\u0022,\u002216\u0022:\u0022120\\\/70-17\u0022},\u0022jupiter-z1\u0022:{\u00221\u0022:\u00224-langkah, SOHC, 2 katup, berpendingin udara\u0022,\u00222\u0022:\u0022115 cc\u0022,\u00223\u0022:\u00227,4 kW \\\/ 7.750 rpm\u0022,\u00224\u0022:\u00229,9 Nm \\\/ 6.500 rpm\u0022,\u00225\u0022:\u0022Manual 4-percepatan\u0022,\u00226\u0022:\u0022Fuel injection\u0022,\u00227\u0022:\u00221.935 \\u00d7 680 \\u00d7 1.065 mm\u0022,\u00228\u0022:\u0022765 mm\u0022,\u00229\u0022:\u0022103 kg\u0022,\u002210\u0022:\u00224 L\u0022,\u002211\u0022:\u0022Teleskopik\u0022,\u002212\u0022:\u0022Suspensi ganda\u0022,\u002213\u0022:\u0022Cakram hidrolik\u0022,\u002214\u0022:\u0022Tromol\u0022,\u002215\u0022:\u002270\\\/90-17\u0022,\u002216\u0022:\u002280\\\/90-17\u0022}}');
+        const BARIS = JSON.parse('[{\u0022nama\u0022:\u0022Dimensi\u0022,\u0022jenis\u0022:[{\u0022id\u0022:7,\u0022nama\u0022:\u0022Panjang \\u00d7 lebar \\u00d7 tinggi\u0022},{\u0022id\u0022:8,\u0022nama\u0022:\u0022Tinggi tempat duduk\u0022},{\u0022id\u0022:9,\u0022nama\u0022:\u0022Berat isi\u0022},{\u0022id\u0022:10,\u0022nama\u0022:\u0022Kapasitas tangki\u0022}]},{\u0022nama\u0022:\u0022Mesin\u0022,\u0022jenis\u0022:[{\u0022id\u0022:1,\u0022nama\u0022:\u0022Tipe mesin\u0022},{\u0022id\u0022:2,\u0022nama\u0022:\u0022Kapasitas mesin\u0022},{\u0022id\u0022:3,\u0022nama\u0022:\u0022Daya maksimum\u0022},{\u0022id\u0022:4,\u0022nama\u0022:\u0022Torsi maksimum\u0022},{\u0022id\u0022:5,\u0022nama\u0022:\u0022Transmisi\u0022},{\u0022id\u0022:6,\u0022nama\u0022:\u0022Sistem bahan bakar\u0022}]},{\u0022nama\u0022:\u0022Rangka dan kaki-kaki\u0022,\u0022jenis\u0022:[{\u0022id\u0022:11,\u0022nama\u0022:\u0022Suspensi depan\u0022},{\u0022id\u0022:12,\u0022nama\u0022:\u0022Suspensi belakang\u0022},{\u0022id\u0022:13,\u0022nama\u0022:\u0022Rem depan\u0022},{\u0022id\u0022:14,\u0022nama\u0022:\u0022Rem belakang\u0022},{\u0022id\u0022:15,\u0022nama\u0022:\u0022Ban depan\u0022},{\u0022id\u0022:16,\u0022nama\u0022:\u0022Ban belakang\u0022}]}]');
+        const MAKSIMAL = 3;
+        const tabel = document.getElementById('tabel-banding');
+
+        const sel = (tag, kelas, teks) => {
+            const el = document.createElement(tag);
+            if (kelas) el.className = kelas;
+            if (teks !== undefined) el.textContent = teks;
+
+            return el;
+        };
+
+        const susun = () => {
+            const pilihan = window.bandingkan.daftar().filter((slug) => slug in NILAI);
+            document.getElementById('banding-kosong').hidden = pilihan.length > 0;
+            document.getElementById('banding-isi').hidden = pilihan.length === 0;
+            document.getElementById('banding-catatan').hidden = pilihan.length < 2;
+            if (! pilihan.length) return;
+
+            const kosong = MAKSIMAL - pilihan.length;
+            const thead = sel('thead');
+            const kepala = sel('tr', 'align-top');
+            kepala.append(sel('td', 'w-44'));
+            pilihan.forEach((slug) => kepala.append(document.querySelector(`template[data-kepala="${slug}"]`).content.cloneNode(true)));
+            for (let i = 0; i < kosong; i++) kepala.append(document.getElementById('kepala-kosong').content.cloneNode(true));
+            thead.append(kepala);
+
+            const isi = BARIS.map(({ nama, jenis }) => {
+                const tbody = sel('tbody');
+                const judul = sel('tr');
+                const th = sel('th', 'pt-8 pb-2 font-semibold border-b border-arang', nama);
+                th.scope = 'colgroup';
+                th.colSpan = MAKSIMAL + 1;
+                judul.append(th);
+                tbody.append(judul);
+
+                jenis.forEach((type) => {
+                    const nilai = pilihan.map((slug) => NILAI[slug][type.id] ?? '-');
+                    const beda = new Set(nilai).size > 1;
+                    const tr = sel('tr', 'border-b border-garis align-top');
+                    const label = sel('th', 'py-3 pr-3 font-normal text-redup border-l-4 pl-3 ' + (beda ? 'border-zaitun' : 'border-transparent'), type.nama);
+                    label.scope = 'row';
+                    tr.append(label);
+                    nilai.forEach((teks) => tr.append(sel('td', 'angka px-3 py-3' + (beda ? ' font-medium' : ''), teks)));
+                    for (let i = 0; i < kosong; i++) tr.append(sel('td'));
+                    tbody.append(tr);
+                });
+
+                return tbody;
+            });
+
+            tabel.replaceChildren(thead, ...isi);
+        };
+
+        tabel.addEventListener('click', (e) => {
+            const tombol = e.target.closest('[data-hapus-banding]');
+            if (tombol) window.bandingkan.hapus(tombol.dataset.hapusBanding);
+        });
+        document.addEventListener('bandingkan:berubah', susun);
+        susun();
+    });
+</script>
+            </div>
+    </main>
+
+    <footer class="mt-24 bg-arang text-perak">
+        <div class="wadah pt-14 pb-7">
+            <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-[435px_1fr_1fr_252px] lg:gap-16">
+                <div class="flex flex-col gap-6">
+                    <a href="https://eternaledo.github.io/metro-cimahi-motor/" class="flex items-center gap-2.5 text-white">
+                        <img src="https://eternaledo.github.io/metro-cimahi-motor/images/ikon/monogram-terang.svg" alt="" width="28" height="30" class="h-[30px] w-7">
+                        <span class="flex flex-col gap-0.5 leading-none">
+                            <span class="text-[22px] font-bold tracking-[-0.01em]">METRO CIMAHI</span>
+                            <span class="text-[9px] font-medium tracking-[0.32em]">MOTOR</span>
+                        </span>
+                    </a>
+                    <p class="max-w-[310px] text-[13px] leading-[1.75]">Pilihan motor Yamaha untuk setiap perjalanan. Proyek portofolio; seluruh data showroom adalah contoh.</p>
+                </div>
+
+                <div class="flex flex-col gap-3.5 text-xs">
+                    <p class="text-[13px] font-semibold text-white">Jelajahi</p>
+                    <a href="https://eternaledo.github.io/metro-cimahi-motor/katalog/" class="hover:text-white">Katalog motor</a>
+                                            <a href="https://eternaledo.github.io/metro-cimahi-motor/katalog/?kategori%5B0%5D=maxi" class="hover:text-white">Maxi</a>
+                                            <a href="https://eternaledo.github.io/metro-cimahi-motor/katalog/?kategori%5B0%5D=classy" class="hover:text-white">Classy</a>
+                                            <a href="https://eternaledo.github.io/metro-cimahi-motor/katalog/?kategori%5B0%5D=sport" class="hover:text-white">Sport</a>
+                                            <a href="https://eternaledo.github.io/metro-cimahi-motor/katalog/?kategori%5B0%5D=moped" class="hover:text-white">Moped</a>
+                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/bandingkan/" class="hover:text-white">Bandingkan motor</a>
+                </div>
+
+                <div class="flex flex-col gap-3.5 text-xs">
+                    <p class="text-[13px] font-semibold text-white">Layanan</p>
+                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/dealer/" class="hover:text-white">Dealer kami</a>
+                    <a href="https://eternaledo.github.io/metro-cimahi-motor/artikel/" class="hover:text-white">Artikel</a>
+                    <a href="https://eternaledo.github.io/metro-cimahi-motor/#faq" class="hover:text-white">Pertanyaan umum</a>
+                </div>
+
+                <div class="flex flex-col gap-3.5 text-xs">
+                    <p class="text-[13px] font-semibold text-white">Terhubung dengan kami</p>
+                                                                <a href="mailto:halo@metrocimahimotor.example" class="hover:text-white">halo@metrocimahimotor.example</a>
+                                                                                                </div>
+            </div>
+
+            <div class="mt-12 flex flex-col gap-3 border-t border-[#3E433D] pt-6 text-[11px] sm:flex-row sm:justify-between">
+                <p>&copy; 2026 Metro Cimahi Motor. Seluruh hak cipta dilindungi.</p>
+                <p>Proyek portofolio. Harga, dealer, dan kontak hanya contoh; tidak berafiliasi dengan Yamaha.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

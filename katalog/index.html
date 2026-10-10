@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Katalog | Metro Cimahi Motor</title>
+<link rel="icon" href="https://eternaledo.github.io/metro-cimahi-motor/images/ikon/monogram.svg" type="image/svg+xml">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preload" as="style" href="https://eternaledo.github.io/metro-cimahi-motor/build/assets/app-C-hbG7D2.css" /><link rel="modulepreload" as="script" href="https://eternaledo.github.io/metro-cimahi-motor/build/assets/app-nDZhw50O.js" /><link rel="stylesheet" href="https://eternaledo.github.io/metro-cimahi-motor/build/assets/app-C-hbG7D2.css" /><script type="module" src="https://eternaledo.github.io/metro-cimahi-motor/build/assets/app-nDZhw50O.js"></script></head>
+
+<body  data-statis  class="bg-white text-arang font-sans antialiased min-h-screen flex flex-col">
+    <a href="#isi" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-arang focus:px-4 focus:py-2 focus:text-white">Langsung ke isi</a>
+
+    
+    <header x-data="{ menu: false, cari: false, kecil: false }" @keydown.escape.window="menu = false; cari = false"
+        x-init="kecil = scrollY > 80" @scroll.window.passive="kecil = scrollY > (kecil ? 24 : 80)" :data-kecil="kecil"
+        class="kepala sticky top-0 z-30 border-b border-garis bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85">
+        <div class="kepala-baris wadah grid grid-cols-[1fr_auto] items-center gap-6 xl:grid-cols-[1fr_auto_1fr]">
+            
+            <a href="https://eternaledo.github.io/metro-cimahi-motor/" class="flex items-center gap-2.5 justify-self-start" aria-label="Metro Cimahi Motor, ke beranda">
+                <img src="https://eternaledo.github.io/metro-cimahi-motor/images/ikon/monogram.svg" alt="" width="28" height="30" class="kepala-logo">
+                <span class="flex flex-col gap-0.5 leading-none">
+                    <span class="kepala-nama font-bold tracking-[-0.01em]">METRO CIMAHI</span>
+                    <span class="kepala-sub font-medium tracking-[0.32em]">MOTOR</span>
+                </span>
+            </a>
+
+            
+            <nav class="kepala-menu hidden xl:flex items-center" aria-label="Menu utama">
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/"                         class="relative py-2 transition-colors text-abu hover:text-arang
+                            after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:bg-arang after:transition-transform after:duration-300 after:scale-x-0 hover:after:scale-x-100">
+                        Beranda
+                                            </a>
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/katalog/"  aria-current="page"                         class="relative py-2 transition-colors font-semibold text-arang
+                            after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:bg-arang after:transition-transform after:duration-300 after:scale-x-100">
+                        Katalog
+                                            </a>
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/bandingkan/"                         class="relative py-2 transition-colors text-abu hover:text-arang
+                            after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:bg-arang after:transition-transform after:duration-300 after:scale-x-0 hover:after:scale-x-100">
+                        Bandingkan
+                                                    <span data-jumlah-banding hidden class="angka ml-1 inline-flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-zaitun px-1 text-[10px] font-semibold text-white"></span>
+                                            </a>
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/dealer/"                         class="relative py-2 transition-colors text-abu hover:text-arang
+                            after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:bg-arang after:transition-transform after:duration-300 after:scale-x-0 hover:after:scale-x-100">
+                        Dealer
+                                            </a>
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/artikel/"                         class="relative py-2 transition-colors text-abu hover:text-arang
+                            after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:bg-arang after:transition-transform after:duration-300 after:scale-x-0 hover:after:scale-x-100">
+                        Artikel
+                                            </a>
+                            </nav>
+
+            
+            <div class="flex items-center justify-self-end gap-4 sm:gap-6">
+                <button type="button" @click="cari = ! cari; menu = false; $nextTick(() => cari && $refs.kolomCari.focus())" :aria-expanded="cari"
+                    aria-controls="panel-cari" aria-label="Cari motor" class="kepala-ikon grid place-items-center rounded text-arang hover:bg-kertas">
+                    <img src="https://eternaledo.github.io/metro-cimahi-motor/images/ikon/search.svg" alt="" width="20" height="20" class="h-5 w-5">
+                </button>
+
+                <a href="https://eternaledo.github.io/metro-cimahi-motor/dealer/"  class="kepala-tombol tombol hidden sm:inline-flex">
+                    Hubungi kami
+                    <img src="https://eternaledo.github.io/metro-cimahi-motor/images/ikon/message-circle-terang.svg" alt="" width="18" height="18" class="h-[18px] w-[18px]">
+                </a>
+
+                <div class="hidden">
+                                                        </div>
+
+                <button type="button" @click="menu = ! menu; cari = false" :aria-expanded="menu" aria-controls="menu-ponsel" aria-label="Buka menu"
+                    class="kepala-ikon grid place-items-center rounded hover:bg-kertas xl:hidden">
+                    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+                        <path x-show="! menu" d="M4 7h16M4 12h16M4 17h16" />
+                        <path x-cloak x-show="menu" d="M6 6l12 12M18 6L6 18" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        
+        <div id="panel-cari" x-cloak x-show="cari" x-transition.opacity class="border-t border-garis bg-white">
+            <form action="https://eternaledo.github.io/metro-cimahi-motor/katalog/" method="GET" class="wadah flex items-center gap-3 py-4" role="search">
+                <label for="cari-motor" class="sr-only">Cari nama motor</label>
+                <input x-ref="kolomCari" type="search" id="cari-motor" name="q" value="" placeholder="Cari motor, misalnya Aerox atau R15"
+                    class="isian mt-0 flex-1">
+                <button type="submit" class="tombol">Cari</button>
+            </form>
+        </div>
+
+        
+        <div id="menu-ponsel" x-cloak x-show="menu" x-transition.opacity class="border-t border-garis bg-white xl:hidden">
+            <nav class="wadah flex flex-col py-3" aria-label="Menu utama">
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/"                         class="flex items-center justify-between border-b border-garis py-3.5 text-abu">
+                        Beranda
+                                            </a>
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/katalog/"  aria-current="page"                         class="flex items-center justify-between border-b border-garis py-3.5 font-semibold">
+                        Katalog
+                                            </a>
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/bandingkan/"                         class="flex items-center justify-between border-b border-garis py-3.5 text-abu">
+                        Bandingkan
+                                                    <span data-jumlah-banding hidden class="angka inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-zaitun px-1.5 text-xs text-white"></span>
+                                            </a>
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/dealer/"                         class="flex items-center justify-between border-b border-garis py-3.5 text-abu">
+                        Dealer
+                                            </a>
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/artikel/"                         class="flex items-center justify-between border-b border-garis py-3.5 text-abu">
+                        Artikel
+                                            </a>
+                                <div class="flex flex-wrap items-center gap-3 pt-5 pb-2">
+                    <a href="https://eternaledo.github.io/metro-cimahi-motor/dealer/"  class="tombol sm:hidden">
+                        Hubungi kami
+                        <img src="https://eternaledo.github.io/metro-cimahi-motor/images/ikon/message-circle-terang.svg" alt="" width="18" height="18" class="h-[18px] w-[18px]">
+                    </a>
+                                                        </div>
+            </nav>
+        </div>
+    </header>
+
+    
+    <div id="pesan-statis" class="wadah mt-5" role="status" hidden>
+        <p class="flex items-center gap-3 rounded border px-4 py-3 text-sm"></p>
+    </div>
+
+    
+    <main id="isi" class="flex-1">
+        <div class="wadah pt-12">
+        <div class="flex flex-col gap-4">
+            <p class="penanda">Katalog motor Yamaha</p>
+            <h1 class="judul-bagian">Temukan motor yang tepat.</h1>
+        </div>
+
+        <div class="mt-10 grid items-start gap-8 lg:grid-cols-[272px_1fr] lg:gap-12">
+            
+            <form id="form-filter" action="https://eternaledo.github.io/metro-cimahi-motor/katalog/" method="GET" class="lg:sticky lg:top-24" aria-controls="hasil">
+                <details id="panel-filter" class="rounded-lg border border-garis">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 lg:cursor-default [&::-webkit-details-marker]:hidden">
+                        <span class="flex items-center gap-2 text-sm font-semibold">
+                            <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4" /></svg>
+                            Filter
+                            <span id="jumlah-filter" class="angka grid h-5 min-w-5 place-items-center rounded-full bg-arang px-1.5 text-[10px] text-white hidden">0</span>
+                        </span>
+                        <span id="hapus-atas">
+                                                            <button type="button" data-hapus-semua hidden class="text-xs font-medium text-abu underline underline-offset-4 hover:text-arang">Hapus filter</button>
+                                                    </span>
+                    </summary>
+
+                    <div class="divide-y divide-garis border-t border-garis px-5">
+                        <div class="py-5">
+                            <label for="q" class="sr-only">Cari nama motor</label>
+                            <div class="relative">
+                                <img src="https://eternaledo.github.io/metro-cimahi-motor/images/ikon/search.svg" alt="" width="20" height="20" class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 opacity-60">
+                                <input type="search" id="q" name="q" value="" placeholder="Cari nama motor" autocomplete="off"
+                                    class="w-full rounded border-garis bg-white py-2.5 pl-9 pr-3 text-sm placeholder:text-redup focus:border-arang focus:ring-0">
+                            </div>
+                        </div>
+
+                        <fieldset class="py-5">
+                            <legend class="sr-only">Kategori</legend>
+                            <p class="text-xs font-semibold uppercase tracking-[0.04em] text-redup" aria-hidden="true">Kategori</p>
+                            <div class="mt-3 space-y-1">
+                                                                    <label class="-mx-2 flex cursor-pointer items-center gap-2.5 rounded px-2 py-1.5 text-sm text-abu transition-colors hover:bg-kertas hover:text-arang has-[:checked]:text-arang">
+                                        <input type="checkbox" name="kategori[]" value="maxi"  class="h-4 w-4 rounded-sm border-garis text-arang focus:ring-arang/30">
+                                        <span>Maxi</span>
+                                        <span class="angka ml-auto text-xs text-redup">3</span>
+                                    </label>
+                                                                    <label class="-mx-2 flex cursor-pointer items-center gap-2.5 rounded px-2 py-1.5 text-sm text-abu transition-colors hover:bg-kertas hover:text-arang has-[:checked]:text-arang">
+                                        <input type="checkbox" name="kategori[]" value="classy"  class="h-4 w-4 rounded-sm border-garis text-arang focus:ring-arang/30">
+                                        <span>Classy</span>
+                                        <span class="angka ml-auto text-xs text-redup">1</span>
+                                    </label>
+                                                                    <label class="-mx-2 flex cursor-pointer items-center gap-2.5 rounded px-2 py-1.5 text-sm text-abu transition-colors hover:bg-kertas hover:text-arang has-[:checked]:text-arang">
+                                        <input type="checkbox" name="kategori[]" value="sport"  class="h-4 w-4 rounded-sm border-garis text-arang focus:ring-arang/30">
+                                        <span>Sport</span>
+                                        <span class="angka ml-auto text-xs text-redup">4</span>
+                                    </label>
+                                                                    <label class="-mx-2 flex cursor-pointer items-center gap-2.5 rounded px-2 py-1.5 text-sm text-abu transition-colors hover:bg-kertas hover:text-arang has-[:checked]:text-arang">
+                                        <input type="checkbox" name="kategori[]" value="moped"  class="h-4 w-4 rounded-sm border-garis text-arang focus:ring-arang/30">
+                                        <span>Moped</span>
+                                        <span class="angka ml-auto text-xs text-redup">2</span>
+                                    </label>
+                                                            </div>
+                        </fieldset>
+
+                        <fieldset class="py-5">
+                            <legend class="sr-only">Transmisi</legend>
+                            <p class="text-xs font-semibold uppercase tracking-[0.04em] text-redup" aria-hidden="true">Transmisi</p>
+                            <div class="mt-3 grid grid-cols-3 gap-1 rounded-full bg-kertas p-1">
+                                                                    <label class="cursor-pointer">
+                                        <input type="radio" name="transmisi" value="" checked class="peer sr-only">
+                                        <span class="block rounded-full py-2 text-center text-xs font-medium text-abu transition-colors hover:text-arang peer-checked:bg-white peer-checked:text-arang peer-checked:shadow-[0_1px_2px_rgba(25,27,26,0.12)] peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-zaitun">Semua</span>
+                                    </label>
+                                                                    <label class="cursor-pointer">
+                                        <input type="radio" name="transmisi" value="otomatis"  class="peer sr-only">
+                                        <span class="block rounded-full py-2 text-center text-xs font-medium text-abu transition-colors hover:text-arang peer-checked:bg-white peer-checked:text-arang peer-checked:shadow-[0_1px_2px_rgba(25,27,26,0.12)] peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-zaitun">Matic</span>
+                                    </label>
+                                                                    <label class="cursor-pointer">
+                                        <input type="radio" name="transmisi" value="manual"  class="peer sr-only">
+                                        <span class="block rounded-full py-2 text-center text-xs font-medium text-abu transition-colors hover:text-arang peer-checked:bg-white peer-checked:text-arang peer-checked:shadow-[0_1px_2px_rgba(25,27,26,0.12)] peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-zaitun">Manual</span>
+                                    </label>
+                                                            </div>
+                        </fieldset>
+
+                        <fieldset class="py-5">
+                            <legend class="sr-only">Kapasitas mesin</legend>
+                            <p class="text-xs font-semibold uppercase tracking-[0.04em] text-redup" aria-hidden="true">Kapasitas mesin</p>
+                            <div class="mt-3 space-y-1">
+                                                                    <label class="-mx-2 flex cursor-pointer items-center gap-2.5 rounded px-2 py-1.5 text-sm text-abu transition-colors hover:bg-kertas hover:text-arang has-[:checked]:text-arang">
+                                        <input type="checkbox" name="cc[]" value="kecil"  class="h-4 w-4 rounded-sm border-garis text-arang focus:ring-arang/30">
+                                        <span>Sampai 125 cc</span>
+                                    </label>
+                                                                    <label class="-mx-2 flex cursor-pointer items-center gap-2.5 rounded px-2 py-1.5 text-sm text-abu transition-colors hover:bg-kertas hover:text-arang has-[:checked]:text-arang">
+                                        <input type="checkbox" name="cc[]" value="sedang"  class="h-4 w-4 rounded-sm border-garis text-arang focus:ring-arang/30">
+                                        <span>126 – 155 cc</span>
+                                    </label>
+                                                                    <label class="-mx-2 flex cursor-pointer items-center gap-2.5 rounded px-2 py-1.5 text-sm text-abu transition-colors hover:bg-kertas hover:text-arang has-[:checked]:text-arang">
+                                        <input type="checkbox" name="cc[]" value="besar"  class="h-4 w-4 rounded-sm border-garis text-arang focus:ring-arang/30">
+                                        <span>Di atas 155 cc</span>
+                                    </label>
+                                                            </div>
+                        </fieldset>
+
+                                                    <div class="py-5">
+                                <div class="flex items-baseline justify-between gap-3">
+                                    <label for="harga_maks" class="text-xs font-semibold uppercase tracking-[0.04em] text-redup">Harga</label>
+                                    <output id="label-harga" for="harga_maks" class="angka text-sm font-medium">
+                                        Semua harga
+                                    </output>
+                                </div>
+                                <input type="range" id="harga_maks" name="harga_maks" min="10000000" max="66500000" step="500000" value="66500000"
+                                    data-batas="66500000" class="mt-3 w-full cursor-pointer accent-arang">
+                                <div class="angka mt-2 flex justify-between text-[11px] text-redup">
+                                    <span>Rp10 jt</span>
+                                    <span>Rp67 jt</span>
+                                </div>
+                            </div>
+                        
+                        <noscript>
+                            <div class="py-5"><button type="submit" class="tombol w-full">Terapkan filter</button></div>
+                        </noscript>
+                    </div>
+                </details>
+            </form>
+
+            
+            <div id="hasil" aria-live="polite" class="min-w-0 scroll-mt-28 transition-opacity duration-200">
+                <div class="flex flex-wrap items-center justify-between gap-3 border-b border-garis pb-4">
+                    <p id="jumlah-hasil" class="angka text-xs text-redup">10 motor tersedia</p>
+                    <label class="flex items-center gap-3 text-xs text-redup">
+                        <span>Urutkan</span>
+                        <select name="urut" form="form-filter" class="rounded border-garis py-2 pl-3 pr-8 text-sm text-arang focus:border-arang focus:ring-0">
+                                                            <option value="terbaru" selected>Terbaru</option>
+                                                            <option value="termurah" >Harga terendah</option>
+                                                            <option value="termahal" >Harga tertinggi</option>
+                                                    </select>
+                    </label>
+                </div>
+
+                
+                                    <div id="filter-aktif" hidden class="flex flex-wrap items-center gap-2 border-b border-garis py-4"></div>
+                
+                                    <div id="hasil-kosong" hidden class="py-16">
+                        <p class="text-2xl font-semibold">Tidak ada motor yang cocok.</p>
+                        <p class="mt-2 text-abu">Longgarkan filter, atau <button type="button" data-hapus-semua class="font-medium text-arang underline underline-offset-4">lihat semua motor</button>.</p>
+                    </div>
+                    <div id="grid-motor" class="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+                                                    <article class="group relative flex flex-col overflow-hidden rounded-lg border border-garis bg-white transition-colors duration-300 hover:border-arang/40" data-nama="jupiter z1" data-kategori="moped" data-cc="115" data-transmisi="manual" data-harga="19500000" data-urutan="0">
+    
+    <div class="relative h-[240px] overflow-hidden bg-white p-4 sm:h-[260px]">
+        <img src="https://eternaledo.github.io/metro-cimahi-motor/storage/motor/jupiter-z1-utama.webp" alt="Jupiter Z1" class="object-contain h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.04]" loading="lazy">
+                <div class="absolute right-4 top-4 z-10">
+            <button type="button" data-bandingkan="jupiter-z1" data-nama="Jupiter Z1" aria-pressed="false" title="Tambah ke perbandingan"
+            data-kelas-aktif="border-zaitun bg-zaitunmuda text-zaitun" data-kelas-pasif="border-garis bg-white/90 text-abu hover:border-arang hover:text-arang"
+            data-teks-aktif="Dibandingkan" data-teks-pasif="Bandingkan"
+            class="flex h-8 items-center gap-1.5 rounded-full border px-3 text-[11px] font-medium backdrop-blur transition-colors border-garis bg-white/90 text-abu hover:border-arang hover:text-arang">
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <g data-ikon-aktif hidden><path d="M5 12l4 4 10-10" /></g><g data-ikon-pasif><path d="M12 5v14M5 12h14" /></g>
+            </svg>
+            <span data-teks>Bandingkan</span>
+        </button>
+            </div>
+    </div>
+
+    <div class="flex flex-1 flex-col gap-4 border-t border-garis p-6">
+        <div class="flex flex-col gap-[5px]">
+            <p class="text-xs text-redup">Yamaha</p>
+            <h3 class="text-2xl font-semibold leading-tight">
+                <a href="https://eternaledo.github.io/metro-cimahi-motor/motor/jupiter-z1/" class="after:absolute after:inset-0 focus-visible:outline-none">Jupiter Z1</a>
+            </h3>
+        </div>
+
+        <div class="flex items-center gap-2.5">
+                            <span class="rounded bg-kertas px-2 py-1 text-[11px] font-medium text-abu">Manual</span>
+                        <span class="angka text-xs text-redup">115 cc · Moped</span>
+        </div>
+
+        <div class="mt-auto flex items-end justify-between gap-3 border-t border-garis pt-4">
+            <div class="flex flex-col gap-1">
+                <p class="text-[10px] text-redup">Mulai dari</p>
+                <p class="angka text-xl font-semibold">Rp19.500.000</p>
+            </div>
+            <div class="flex items-center">
+                <span class="geser-ikon grid h-9 w-9 place-items-center rounded-full border border-garis transition-colors duration-300 group-hover:border-arang group-hover:bg-arang" aria-hidden="true">
+                    <svg aria-hidden="true" focusable="false" class="h-[18px] w-[18px] text-arang transition-colors group-hover:text-white" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="arrow-up-right">
+<path id="Vector" d="M12.7494 12.7494V5.2506H5.2506M12.7494 5.2506L5.2506 12.7494" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+</g>
+</svg>
+
+                </span>
+            </div>
+        </div>
+    </div>
+</article>
+                                                    <article class="group relative flex flex-col overflow-hidden rounded-lg border border-garis bg-white transition-colors duration-300 hover:border-arang/40" data-nama="mx king 150" data-kategori="moped" data-cc="150" data-transmisi="manual" data-harga="26500000" data-urutan="1">
+    
+    <div class="relative h-[240px] overflow-hidden bg-white p-4 sm:h-[260px]">
+        <img src="https://eternaledo.github.io/metro-cimahi-motor/storage/motor/mx-king-150-utama.webp" alt="MX King 150" class="object-contain h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.04]" loading="lazy">
+                    <span class="absolute left-4 top-4 rounded bg-kertas px-2.5 py-1.5 text-[10px] font-medium text-abu">Unggulan</span>
+                <div class="absolute right-4 top-4 z-10">
+            <button type="button" data-bandingkan="mx-king-150" data-nama="MX King 150" aria-pressed="false" title="Tambah ke perbandingan"
+            data-kelas-aktif="border-zaitun bg-zaitunmuda text-zaitun" data-kelas-pasif="border-garis bg-white/90 text-abu hover:border-arang hover:text-arang"
+            data-teks-aktif="Dibandingkan" data-teks-pasif="Bandingkan"
+            class="flex h-8 items-center gap-1.5 rounded-full border px-3 text-[11px] font-medium backdrop-blur transition-colors border-garis bg-white/90 text-abu hover:border-arang hover:text-arang">
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <g data-ikon-aktif hidden><path d="M5 12l4 4 10-10" /></g><g data-ikon-pasif><path d="M12 5v14M5 12h14" /></g>
+            </svg>
+            <span data-teks>Bandingkan</span>
+        </button>
+            </div>
+    </div>
+
+    <div class="flex flex-1 flex-col gap-4 border-t border-garis p-6">
+        <div class="flex flex-col gap-[5px]">
+            <p class="text-xs text-redup">Yamaha</p>
+            <h3 class="text-2xl font-semibold leading-tight">
+                <a href="https://eternaledo.github.io/metro-cimahi-motor/motor/mx-king-150/" class="after:absolute after:inset-0 focus-visible:outline-none">MX King 150</a>
+            </h3>
+        </div>
+
+        <div class="flex items-center gap-2.5">
+                            <span class="rounded bg-kertas px-2 py-1 text-[11px] font-medium text-abu">Manual</span>
+                        <span class="angka text-xs text-redup">150 cc · Moped</span>
+        </div>
+
+        <div class="mt-auto flex items-end justify-between gap-3 border-t border-garis pt-4">
+            <div class="flex flex-col gap-1">
+                <p class="text-[10px] text-redup">Mulai dari</p>
+                <p class="angka text-xl font-semibold">Rp26.500.000</p>
+            </div>
+            <div class="flex items-center">
+                <span class="geser-ikon grid h-9 w-9 place-items-center rounded-full border border-garis transition-colors duration-300 group-hover:border-arang group-hover:bg-arang" aria-hidden="true">
+                    <svg aria-hidden="true" focusable="false" class="h-[18px] w-[18px] text-arang transition-colors group-hover:text-white" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="arrow-up-right">
+<path id="Vector" d="M12.7494 12.7494V5.2506H5.2506M12.7494 5.2506L5.2506 12.7494" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+</g>
+</svg>
+
+                </span>
+            </div>
+        </div>
+    </div>
+</article>
+                                                    <article class="group relative flex flex-col overflow-hidden rounded-lg border border-garis bg-white transition-colors duration-300 hover:border-arang/40" data-nama="xsr 155" data-kategori="sport" data-cc="155" data-transmisi="manual" data-harga="38000000" data-urutan="2">
+    
+    <div class="relative h-[240px] overflow-hidden bg-white p-4 sm:h-[260px]">
+        <img src="https://eternaledo.github.io/metro-cimahi-motor/storage/motor/xsr-155-utama.webp" alt="XSR 155" class="object-contain h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.04]" loading="lazy">
+                <div class="absolute right-4 top-4 z-10">
+            <button type="button" data-bandingkan="xsr-155" data-nama="XSR 155" aria-pressed="false" title="Tambah ke perbandingan"
+            data-kelas-aktif="border-zaitun bg-zaitunmuda text-zaitun" data-kelas-pasif="border-garis bg-white/90 text-abu hover:border-arang hover:text-arang"
+            data-teks-aktif="Dibandingkan" data-teks-pasif="Bandingkan"
+            class="flex h-8 items-center gap-1.5 rounded-full border px-3 text-[11px] font-medium backdrop-blur transition-colors border-garis bg-white/90 text-abu hover:border-arang hover:text-arang">
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <g data-ikon-aktif hidden><path d="M5 12l4 4 10-10" /></g><g data-ikon-pasif><path d="M12 5v14M5 12h14" /></g>
+            </svg>
+            <span data-teks>Bandingkan</span>
+        </button>
+            </div>
+    </div>
+
+    <div class="flex flex-1 flex-col gap-4 border-t border-garis p-6">
+        <div class="flex flex-col gap-[5px]">
+            <p class="text-xs text-redup">Yamaha</p>
+            <h3 class="text-2xl font-semibold leading-tight">
+                <a href="https://eternaledo.github.io/metro-cimahi-motor/motor/xsr-155/" class="after:absolute after:inset-0 focus-visible:outline-none">XSR 155</a>
+            </h3>
+        </div>
+
+        <div class="flex items-center gap-2.5">
+                            <span class="rounded bg-kertas px-2 py-1 text-[11px] font-medium text-abu">Manual</span>
+                        <span class="angka text-xs text-redup">155 cc · Sport</span>
+        </div>
+
+        <div class="mt-auto flex items-end justify-between gap-3 border-t border-garis pt-4">
+            <div class="flex flex-col gap-1">
+                <p class="text-[10px] text-redup">Mulai dari</p>
+                <p class="angka text-xl font-semibold">Rp38.000.000</p>
+            </div>
+            <div class="flex items-center">
+                <span class="geser-ikon grid h-9 w-9 place-items-center rounded-full border border-garis transition-colors duration-300 group-hover:border-arang group-hover:bg-arang" aria-hidden="true">
+                    <svg aria-hidden="true" focusable="false" class="h-[18px] w-[18px] text-arang transition-colors group-hover:text-white" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="arrow-up-right">
+<path id="Vector" d="M12.7494 12.7494V5.2506H5.2506M12.7494 5.2506L5.2506 12.7494" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+</g>
+</svg>
+
+                </span>
+            </div>
+        </div>
+    </div>
+</article>
+                                                    <article class="group relative flex flex-col overflow-hidden rounded-lg border border-garis bg-white transition-colors duration-300 hover:border-arang/40" data-nama="r25" data-kategori="sport" data-cc="250" data-transmisi="manual" data-harga="63500000" data-urutan="3">
+    
+    <div class="relative h-[240px] overflow-hidden bg-white p-4 sm:h-[260px]">
+        <img src="https://eternaledo.github.io/metro-cimahi-motor/storage/motor/r25-utama.png" alt="R25" class="object-contain h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.04]" loading="lazy">
+                <div class="absolute right-4 top-4 z-10">
+            <button type="button" data-bandingkan="r25" data-nama="R25" aria-pressed="false" title="Tambah ke perbandingan"
+            data-kelas-aktif="border-zaitun bg-zaitunmuda text-zaitun" data-kelas-pasif="border-garis bg-white/90 text-abu hover:border-arang hover:text-arang"
+            data-teks-aktif="Dibandingkan" data-teks-pasif="Bandingkan"
+            class="flex h-8 items-center gap-1.5 rounded-full border px-3 text-[11px] font-medium backdrop-blur transition-colors border-garis bg-white/90 text-abu hover:border-arang hover:text-arang">
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <g data-ikon-aktif hidden><path d="M5 12l4 4 10-10" /></g><g data-ikon-pasif><path d="M12 5v14M5 12h14" /></g>
+            </svg>
+            <span data-teks>Bandingkan</span>
+        </button>
+            </div>
+    </div>
+
+    <div class="flex flex-1 flex-col gap-4 border-t border-garis p-6">
+        <div class="flex flex-col gap-[5px]">
+            <p class="text-xs text-redup">Yamaha</p>
+            <h3 class="text-2xl font-semibold leading-tight">
+                <a href="https://eternaledo.github.io/metro-cimahi-motor/motor/r25/" class="after:absolute after:inset-0 focus-visible:outline-none">R25</a>
+            </h3>
+        </div>
+
+        <div class="flex items-center gap-2.5">
+                            <span class="rounded bg-kertas px-2 py-1 text-[11px] font-medium text-abu">Manual</span>
+                        <span class="angka text-xs text-redup">250 cc · Sport</span>
+        </div>
+
+        <div class="mt-auto flex items-end justify-between gap-3 border-t border-garis pt-4">
+            <div class="flex flex-col gap-1">
+                <p class="text-[10px] text-redup">Mulai dari</p>
+                <p class="angka text-xl font-semibold">Rp63.500.000</p>
+            </div>
+            <div class="flex items-center">
+                <span class="geser-ikon grid h-9 w-9 place-items-center rounded-full border border-garis transition-colors duration-300 group-hover:border-arang group-hover:bg-arang" aria-hidden="true">
+                    <svg aria-hidden="true" focusable="false" class="h-[18px] w-[18px] text-arang transition-colors group-hover:text-white" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="arrow-up-right">
+<path id="Vector" d="M12.7494 12.7494V5.2506H5.2506M12.7494 5.2506L5.2506 12.7494" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+</g>
+</svg>
+
+                </span>
+            </div>
+        </div>
+    </div>
+</article>
+                                                    <article class="group relative flex flex-col overflow-hidden rounded-lg border border-garis bg-white transition-colors duration-300 hover:border-arang/40" data-nama="mt-15" data-kategori="sport" data-cc="155" data-transmisi="manual" data-harga="38500000" data-urutan="4">
+    
+    <div class="relative h-[240px] overflow-hidden bg-white p-4 sm:h-[260px]">
+        <img src="https://eternaledo.github.io/metro-cimahi-motor/storage/motor/mt-15-utama.png" alt="MT-15" class="object-contain h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.04]" loading="lazy">
+                <div class="absolute right-4 top-4 z-10">
+            <button type="button" data-bandingkan="mt-15" data-nama="MT-15" aria-pressed="false" title="Tambah ke perbandingan"
+            data-kelas-aktif="border-zaitun bg-zaitunmuda text-zaitun" data-kelas-pasif="border-garis bg-white/90 text-abu hover:border-arang hover:text-arang"
+            data-teks-aktif="Dibandingkan" data-teks-pasif="Bandingkan"
+            class="flex h-8 items-center gap-1.5 rounded-full border px-3 text-[11px] font-medium backdrop-blur transition-colors border-garis bg-white/90 text-abu hover:border-arang hover:text-arang">
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <g data-ikon-aktif hidden><path d="M5 12l4 4 10-10" /></g><g data-ikon-pasif><path d="M12 5v14M5 12h14" /></g>
+            </svg>
+            <span data-teks>Bandingkan</span>
+        </button>
+            </div>
+    </div>
+
+    <div class="flex flex-1 flex-col gap-4 border-t border-garis p-6">
+        <div class="flex flex-col gap-[5px]">
+            <p class="text-xs text-redup">Yamaha</p>
+            <h3 class="text-2xl font-semibold leading-tight">
+                <a href="https://eternaledo.github.io/metro-cimahi-motor/motor/mt-15/" class="after:absolute after:inset-0 focus-visible:outline-none">MT-15</a>
+            </h3>
+        </div>
+
+        <div class="flex items-center gap-2.5">
+                            <span class="rounded bg-kertas px-2 py-1 text-[11px] font-medium text-abu">Manual</span>
+                        <span class="angka text-xs text-redup">155 cc · Sport</span>
+        </div>
+
+        <div class="mt-auto flex items-end justify-between gap-3 border-t border-garis pt-4">
+            <div class="flex flex-col gap-1">
+                <p class="text-[10px] text-redup">Mulai dari</p>
+                <p class="angka text-xl font-semibold">Rp38.500.000</p>
+            </div>
+            <div class="flex items-center">
+                <span class="geser-ikon grid h-9 w-9 place-items-center rounded-full border border-garis transition-colors duration-300 group-hover:border-arang group-hover:bg-arang" aria-hidden="true">
+                    <svg aria-hidden="true" focusable="false" class="h-[18px] w-[18px] text-arang transition-colors group-hover:text-white" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="arrow-up-right">
+<path id="Vector" d="M12.7494 12.7494V5.2506H5.2506M12.7494 5.2506L5.2506 12.7494" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+</g>
+</svg>
+
+                </span>
+            </div>
+        </div>
+    </div>
+</article>
+                                                    <article class="group relative flex flex-col overflow-hidden rounded-lg border border-garis bg-white transition-colors duration-300 hover:border-arang/40" data-nama="r15 connected" data-kategori="sport" data-cc="155" data-transmisi="manual" data-harga="39500000" data-urutan="5">
+    
+    <div class="relative h-[240px] overflow-hidden bg-white p-4 sm:h-[260px]">
+        <img src="https://eternaledo.github.io/metro-cimahi-motor/storage/motor/r15-connected-utama.webp" alt="R15 Connected" class="object-contain h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.04]" loading="lazy">
+                    <span class="absolute left-4 top-4 rounded bg-kertas px-2.5 py-1.5 text-[10px] font-medium text-abu">Unggulan</span>
+                <div class="absolute right-4 top-4 z-10">
+            <button type="button" data-bandingkan="r15-connected" data-nama="R15 Connected" aria-pressed="false" title="Tambah ke perbandingan"
+            data-kelas-aktif="border-zaitun bg-zaitunmuda text-zaitun" data-kelas-pasif="border-garis bg-white/90 text-abu hover:border-arang hover:text-arang"
+            data-teks-aktif="Dibandingkan" data-teks-pasif="Bandingkan"
+            class="flex h-8 items-center gap-1.5 rounded-full border px-3 text-[11px] font-medium backdrop-blur transition-colors border-garis bg-white/90 text-abu hover:border-arang hover:text-arang">
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <g data-ikon-aktif hidden><path d="M5 12l4 4 10-10" /></g><g data-ikon-pasif><path d="M12 5v14M5 12h14" /></g>
+            </svg>
+            <span data-teks>Bandingkan</span>
+        </button>
+            </div>
+    </div>
+
+    <div class="flex flex-1 flex-col gap-4 border-t border-garis p-6">
+        <div class="flex flex-col gap-[5px]">
+            <p class="text-xs text-redup">Yamaha</p>
+            <h3 class="text-2xl font-semibold leading-tight">
+                <a href="https://eternaledo.github.io/metro-cimahi-motor/motor/r15-connected/" class="after:absolute after:inset-0 focus-visible:outline-none">R15 Connected</a>
+            </h3>
+        </div>
+
+        <div class="flex items-center gap-2.5">
+                            <span class="rounded bg-kertas px-2 py-1 text-[11px] font-medium text-abu">Manual</span>
+                        <span class="angka text-xs text-redup">155 cc · Sport</span>
+        </div>
+
+        <div class="mt-auto flex items-end justify-between gap-3 border-t border-garis pt-4">
+            <div class="flex flex-col gap-1">
+                <p class="text-[10px] text-redup">Mulai dari</p>
+                <p class="angka text-xl font-semibold">Rp39.500.000</p>
+            </div>
+            <div class="flex items-center">
+                <span class="geser-ikon grid h-9 w-9 place-items-center rounded-full border border-garis transition-colors duration-300 group-hover:border-arang group-hover:bg-arang" aria-hidden="true">
+                    <svg aria-hidden="true" focusable="false" class="h-[18px] w-[18px] text-arang transition-colors group-hover:text-white" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="arrow-up-right">
+<path id="Vector" d="M12.7494 12.7494V5.2506H5.2506M12.7494 5.2506L5.2506 12.7494" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+</g>
+</svg>
+
+                </span>
+            </div>
+        </div>
+    </div>
+</article>
+                                                    <article class="group relative flex flex-col overflow-hidden rounded-lg border border-garis bg-white transition-colors duration-300 hover:border-arang/40" data-nama="fazzio hybrid connected" data-kategori="classy" data-cc="125" data-transmisi="otomatis" data-harga="22500000" data-urutan="6">
+    
+    <div class="relative h-[240px] overflow-hidden bg-white p-4 sm:h-[260px]">
+        <img src="https://eternaledo.github.io/metro-cimahi-motor/storage/motor/fazzio-hybrid-connected-utama.webp" alt="Fazzio Hybrid Connected" class="object-contain h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.04]" loading="lazy">
+                <div class="absolute right-4 top-4 z-10">
+            <button type="button" data-bandingkan="fazzio-hybrid-connected" data-nama="Fazzio Hybrid Connected" aria-pressed="false" title="Tambah ke perbandingan"
+            data-kelas-aktif="border-zaitun bg-zaitunmuda text-zaitun" data-kelas-pasif="border-garis bg-white/90 text-abu hover:border-arang hover:text-arang"
+            data-teks-aktif="Dibandingkan" data-teks-pasif="Bandingkan"
+            class="flex h-8 items-center gap-1.5 rounded-full border px-3 text-[11px] font-medium backdrop-blur transition-colors border-garis bg-white/90 text-abu hover:border-arang hover:text-arang">
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <g data-ikon-aktif hidden><path d="M5 12l4 4 10-10" /></g><g data-ikon-pasif><path d="M12 5v14M5 12h14" /></g>
+            </svg>
+            <span data-teks>Bandingkan</span>
+        </button>
+            </div>
+    </div>
+
+    <div class="flex flex-1 flex-col gap-4 border-t border-garis p-6">
+        <div class="flex flex-col gap-[5px]">
+            <p class="text-xs text-redup">Yamaha</p>
+            <h3 class="text-2xl font-semibold leading-tight">
+                <a href="https://eternaledo.github.io/metro-cimahi-motor/motor/fazzio-hybrid-connected/" class="after:absolute after:inset-0 focus-visible:outline-none">Fazzio Hybrid Connected</a>
+            </h3>
+        </div>
+
+        <div class="flex items-center gap-2.5">
+                            <span class="rounded bg-kertas px-2 py-1 text-[11px] font-medium text-abu">Matic</span>
+                        <span class="angka text-xs text-redup">125 cc · Classy</span>
+        </div>
+
+        <div class="mt-auto flex items-end justify-between gap-3 border-t border-garis pt-4">
+            <div class="flex flex-col gap-1">
+                <p class="text-[10px] text-redup">Mulai dari</p>
+                <p class="angka text-xl font-semibold">Rp22.500.000</p>
+            </div>
+            <div class="flex items-center">
+                <span class="geser-ikon grid h-9 w-9 place-items-center rounded-full border border-garis transition-colors duration-300 group-hover:border-arang group-hover:bg-arang" aria-hidden="true">
+                    <svg aria-hidden="true" focusable="false" class="h-[18px] w-[18px] text-arang transition-colors group-hover:text-white" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="arrow-up-right">
+<path id="Vector" d="M12.7494 12.7494V5.2506H5.2506M12.7494 5.2506L5.2506 12.7494" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+</g>
+</svg>
+
+                </span>
+            </div>
+        </div>
+    </div>
+</article>
+                                                    <article class="group relative flex flex-col overflow-hidden rounded-lg border border-garis bg-white transition-colors duration-300 hover:border-arang/40" data-nama="aerox 155 connected" data-kategori="maxi" data-cc="155" data-transmisi="otomatis" data-harga="28500000" data-urutan="7">
+    
+    <div class="relative h-[240px] overflow-hidden bg-white p-4 sm:h-[260px]">
+        <img src="https://eternaledo.github.io/metro-cimahi-motor/storage/motor/aerox-155-connected-utama.webp" alt="Aerox 155 Connected" class="object-contain h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.04]" loading="lazy">
+                    <span class="absolute left-4 top-4 rounded bg-kertas px-2.5 py-1.5 text-[10px] font-medium text-abu">Unggulan</span>
+                <div class="absolute right-4 top-4 z-10">
+            <button type="button" data-bandingkan="aerox-155-connected" data-nama="Aerox 155 Connected" aria-pressed="false" title="Tambah ke perbandingan"
+            data-kelas-aktif="border-zaitun bg-zaitunmuda text-zaitun" data-kelas-pasif="border-garis bg-white/90 text-abu hover:border-arang hover:text-arang"
+            data-teks-aktif="Dibandingkan" data-teks-pasif="Bandingkan"
+            class="flex h-8 items-center gap-1.5 rounded-full border px-3 text-[11px] font-medium backdrop-blur transition-colors border-garis bg-white/90 text-abu hover:border-arang hover:text-arang">
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <g data-ikon-aktif hidden><path d="M5 12l4 4 10-10" /></g><g data-ikon-pasif><path d="M12 5v14M5 12h14" /></g>
+            </svg>
+            <span data-teks>Bandingkan</span>
+        </button>
+            </div>
+    </div>
+
+    <div class="flex flex-1 flex-col gap-4 border-t border-garis p-6">
+        <div class="flex flex-col gap-[5px]">
+            <p class="text-xs text-redup">Yamaha</p>
+            <h3 class="text-2xl font-semibold leading-tight">
+                <a href="https://eternaledo.github.io/metro-cimahi-motor/motor/aerox-155-connected/" class="after:absolute after:inset-0 focus-visible:outline-none">Aerox 155 Connected</a>
+            </h3>
+        </div>
+
+        <div class="flex items-center gap-2.5">
+                            <span class="rounded bg-kertas px-2 py-1 text-[11px] font-medium text-abu">Matic</span>
+                        <span class="angka text-xs text-redup">155 cc · Maxi</span>
+        </div>
+
+        <div class="mt-auto flex items-end justify-between gap-3 border-t border-garis pt-4">
+            <div class="flex flex-col gap-1">
+                <p class="text-[10px] text-redup">Mulai dari</p>
+                <p class="angka text-xl font-semibold">Rp28.500.000</p>
+            </div>
+            <div class="flex items-center">
+                <span class="geser-ikon grid h-9 w-9 place-items-center rounded-full border border-garis transition-colors duration-300 group-hover:border-arang group-hover:bg-arang" aria-hidden="true">
+                    <svg aria-hidden="true" focusable="false" class="h-[18px] w-[18px] text-arang transition-colors group-hover:text-white" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="arrow-up-right">
+<path id="Vector" d="M12.7494 12.7494V5.2506H5.2506M12.7494 5.2506L5.2506 12.7494" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+</g>
+</svg>
+
+                </span>
+            </div>
+        </div>
+    </div>
+</article>
+                                                    <article class="group relative flex flex-col overflow-hidden rounded-lg border border-garis bg-white transition-colors duration-300 hover:border-arang/40" data-nama="xmax 250 connected" data-kategori="maxi" data-cc="250" data-transmisi="otomatis" data-harga="66500000" data-urutan="8">
+    
+    <div class="relative h-[240px] overflow-hidden bg-white p-4 sm:h-[260px]">
+        <img src="https://eternaledo.github.io/metro-cimahi-motor/storage/motor/xmax-250-connected-hitam-doff.png" alt="XMAX 250 Connected" class="object-contain h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.04]" loading="lazy">
+                    <span class="absolute left-4 top-4 rounded bg-kertas px-2.5 py-1.5 text-[10px] font-medium text-abu">Unggulan</span>
+                <div class="absolute right-4 top-4 z-10">
+            <button type="button" data-bandingkan="xmax-250-connected" data-nama="XMAX 250 Connected" aria-pressed="false" title="Tambah ke perbandingan"
+            data-kelas-aktif="border-zaitun bg-zaitunmuda text-zaitun" data-kelas-pasif="border-garis bg-white/90 text-abu hover:border-arang hover:text-arang"
+            data-teks-aktif="Dibandingkan" data-teks-pasif="Bandingkan"
+            class="flex h-8 items-center gap-1.5 rounded-full border px-3 text-[11px] font-medium backdrop-blur transition-colors border-garis bg-white/90 text-abu hover:border-arang hover:text-arang">
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <g data-ikon-aktif hidden><path d="M5 12l4 4 10-10" /></g><g data-ikon-pasif><path d="M12 5v14M5 12h14" /></g>
+            </svg>
+            <span data-teks>Bandingkan</span>
+        </button>
+            </div>
+    </div>
+
+    <div class="flex flex-1 flex-col gap-4 border-t border-garis p-6">
+        <div class="flex flex-col gap-[5px]">
+            <p class="text-xs text-redup">Yamaha</p>
+            <h3 class="text-2xl font-semibold leading-tight">
+                <a href="https://eternaledo.github.io/metro-cimahi-motor/motor/xmax-250-connected/" class="after:absolute after:inset-0 focus-visible:outline-none">XMAX 250 Connected</a>
+            </h3>
+        </div>
+
+        <div class="flex items-center gap-2.5">
+                            <span class="rounded bg-kertas px-2 py-1 text-[11px] font-medium text-abu">Matic</span>
+                        <span class="angka text-xs text-redup">250 cc · Maxi</span>
+        </div>
+
+        <div class="mt-auto flex items-end justify-between gap-3 border-t border-garis pt-4">
+            <div class="flex flex-col gap-1">
+                <p class="text-[10px] text-redup">Mulai dari</p>
+                <p class="angka text-xl font-semibold">Rp66.500.000</p>
+            </div>
+            <div class="flex items-center">
+                <span class="geser-ikon grid h-9 w-9 place-items-center rounded-full border border-garis transition-colors duration-300 group-hover:border-arang group-hover:bg-arang" aria-hidden="true">
+                    <svg aria-hidden="true" focusable="false" class="h-[18px] w-[18px] text-arang transition-colors group-hover:text-white" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="arrow-up-right">
+<path id="Vector" d="M12.7494 12.7494V5.2506H5.2506M12.7494 5.2506L5.2506 12.7494" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+</g>
+</svg>
+
+                </span>
+            </div>
+        </div>
+    </div>
+</article>
+                                                    <article class="group relative flex flex-col overflow-hidden rounded-lg border border-garis bg-white transition-colors duration-300 hover:border-arang/40" data-nama="nmax 155 connected" data-kategori="maxi" data-cc="155" data-transmisi="otomatis" data-harga="31500000" data-urutan="9">
+    
+    <div class="relative h-[240px] overflow-hidden bg-white p-4 sm:h-[260px]">
+        <img src="https://eternaledo.github.io/metro-cimahi-motor/storage/motor/nmax-155-connected-hitam-doff.png" alt="NMAX 155 Connected" class="object-contain h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.04]" loading="lazy">
+                    <span class="absolute left-4 top-4 rounded bg-kertas px-2.5 py-1.5 text-[10px] font-medium text-abu">Unggulan</span>
+                <div class="absolute right-4 top-4 z-10">
+            <button type="button" data-bandingkan="nmax-155-connected" data-nama="NMAX 155 Connected" aria-pressed="false" title="Tambah ke perbandingan"
+            data-kelas-aktif="border-zaitun bg-zaitunmuda text-zaitun" data-kelas-pasif="border-garis bg-white/90 text-abu hover:border-arang hover:text-arang"
+            data-teks-aktif="Dibandingkan" data-teks-pasif="Bandingkan"
+            class="flex h-8 items-center gap-1.5 rounded-full border px-3 text-[11px] font-medium backdrop-blur transition-colors border-garis bg-white/90 text-abu hover:border-arang hover:text-arang">
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <g data-ikon-aktif hidden><path d="M5 12l4 4 10-10" /></g><g data-ikon-pasif><path d="M12 5v14M5 12h14" /></g>
+            </svg>
+            <span data-teks>Bandingkan</span>
+        </button>
+            </div>
+    </div>
+
+    <div class="flex flex-1 flex-col gap-4 border-t border-garis p-6">
+        <div class="flex flex-col gap-[5px]">
+            <p class="text-xs text-redup">Yamaha</p>
+            <h3 class="text-2xl font-semibold leading-tight">
+                <a href="https://eternaledo.github.io/metro-cimahi-motor/motor/nmax-155-connected/" class="after:absolute after:inset-0 focus-visible:outline-none">NMAX 155 Connected</a>
+            </h3>
+        </div>
+
+        <div class="flex items-center gap-2.5">
+                            <span class="rounded bg-kertas px-2 py-1 text-[11px] font-medium text-abu">Matic</span>
+                        <span class="angka text-xs text-redup">155 cc · Maxi</span>
+        </div>
+
+        <div class="mt-auto flex items-end justify-between gap-3 border-t border-garis pt-4">
+            <div class="flex flex-col gap-1">
+                <p class="text-[10px] text-redup">Mulai dari</p>
+                <p class="angka text-xl font-semibold">Rp31.500.000</p>
+            </div>
+            <div class="flex items-center">
+                <span class="geser-ikon grid h-9 w-9 place-items-center rounded-full border border-garis transition-colors duration-300 group-hover:border-arang group-hover:bg-arang" aria-hidden="true">
+                    <svg aria-hidden="true" focusable="false" class="h-[18px] w-[18px] text-arang transition-colors group-hover:text-white" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="arrow-up-right">
+<path id="Vector" d="M12.7494 12.7494V5.2506H5.2506M12.7494 5.2506L5.2506 12.7494" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+</g>
+</svg>
+
+                </span>
+            </div>
+        </div>
+    </div>
+</article>
+                                            </div>
+                            </div>
+        </div>
+    </div>
+
+            <script>
+    (() => {
+        const RENTANG_CC = JSON.parse('{\u0022kecil\u0022:{\u0022label\u0022:\u0022Sampai 125 cc\u0022,\u0022min\u0022:0,\u0022maks\u0022:125},\u0022sedang\u0022:{\u0022label\u0022:\u0022126 \\u2013 155 cc\u0022,\u0022min\u0022:126,\u0022maks\u0022:155},\u0022besar\u0022:{\u0022label\u0022:\u0022Di atas 155 cc\u0022,\u0022min\u0022:156,\u0022maks\u0022:9999}}');
+        const KATEGORI = JSON.parse('{\u0022maxi\u0022:\u0022Maxi\u0022,\u0022classy\u0022:\u0022Classy\u0022,\u0022sport\u0022:\u0022Sport\u0022,\u0022moped\u0022:\u0022Moped\u0022}');
+
+        const form = document.getElementById('form-filter');
+        const panel = document.getElementById('panel-filter');
+        const grid = document.getElementById('grid-motor');
+        const kartu = [...grid.children];
+        const urut = document.querySelector('select[form="form-filter"]');
+        const harga = form.harga_maks;
+        const batas = harga ? Number(harga.dataset.batas) : Infinity;
+        const lebar = window.matchMedia('(min-width: 1024px)');
+        const rupiah = (n) => 'Rp' + Number(n).toLocaleString('id-ID');
+
+        // Panel selalu terbuka di layar lebar; di ponsel bisa dilipat
+        const aturPanel = () => { if (lebar.matches) panel.open = true; };
+        lebar.addEventListener('change', aturPanel);
+        aturPanel();
+        panel.querySelector('summary').addEventListener('click', (e) => {
+            if (lebar.matches || e.target.closest('button')) e.preventDefault();
+        });
+
+        const centang = (nama) => [...form.querySelectorAll(`input[name="${nama}[]"]:checked`)].map((el) => el.value);
+
+        const bacaForm = () => ({
+            q: form.q.value.trim(),
+            kategori: centang('kategori'),
+            cc: centang('cc'),
+            transmisi: form.querySelector('input[name="transmisi"]:checked')?.value ?? '',
+            harga_maks: harga && Number(harga.value) < batas ? Number(harga.value) : null,
+            urut: urut.value,
+        });
+
+        const isiForm = (f) => {
+            form.q.value = f.q;
+            form.querySelectorAll('input[name="kategori[]"]').forEach((el) => { el.checked = f.kategori.includes(el.value); });
+            form.querySelectorAll('input[name="cc[]"]').forEach((el) => { el.checked = f.cc.includes(el.value); });
+            form.querySelectorAll('input[name="transmisi"]').forEach((el) => { el.checked = el.value === f.transmisi; });
+            if (harga) {
+                harga.value = f.harga_maks ?? batas;
+                labelHarga();
+            }
+            urut.value = f.urut;
+        };
+
+        // Dari alamat halaman: kategori[]=x maupun kategori[0]=x (bentuk dari helper route() Laravel)
+        const dariAlamat = () => {
+            const p = new URLSearchParams(location.search);
+            const daftar = (awalan) => [...p].filter(([k]) => k === awalan || k.startsWith(awalan + '[')).map(([, v]) => v);
+            const maks = Number(p.get('harga_maks'));
+
+            return {
+                q: p.get('q') ?? '',
+                kategori: daftar('kategori'),
+                cc: daftar('cc'),
+                transmisi: ['otomatis', 'manual'].includes(p.get('transmisi')) ? p.get('transmisi') : '',
+                harga_maks: maks > 0 && maks < batas ? maks : null,
+                urut: ['termurah', 'termahal'].includes(p.get('urut')) ? p.get('urut') : 'terbaru',
+            };
+        };
+
+        const keAlamat = (f) => {
+            const p = new URLSearchParams();
+            if (f.q) p.append('q', f.q);
+            f.kategori.forEach((v) => p.append('kategori[]', v));
+            f.cc.forEach((v) => p.append('cc[]', v));
+            if (f.transmisi) p.append('transmisi', f.transmisi);
+            if (f.harga_maks) p.append('harga_maks', f.harga_maks);
+            if (f.urut !== 'terbaru') p.append('urut', f.urut);
+            const qs = p.toString();
+            history.replaceState(null, '', location.pathname + (qs ? '?' + qs : ''));
+        };
+
+        const cocok = (el, f) => {
+            const d = el.dataset;
+            const cc = Number(d.cc);
+
+            return (! f.q || d.nama.includes(f.q.toLowerCase()))
+                && (! f.kategori.length || f.kategori.includes(d.kategori))
+                && (! f.cc.length || f.cc.some((k) => RENTANG_CC[k] && cc >= RENTANG_CC[k].min && cc <= RENTANG_CC[k].maks))
+                && (! f.transmisi || d.transmisi === f.transmisi)
+                && (! f.harga_maks || Number(d.harga) <= f.harga_maks);
+        };
+
+        const label = (f) => {
+            const aktif = [];
+            if (f.q) aktif.push([`“${f.q}”`, () => { form.q.value = ''; }]);
+            f.kategori.forEach((s) => KATEGORI[s] && aktif.push([KATEGORI[s], () => { form.querySelector(`input[name="kategori[]"][value="${s}"]`).checked = false; }]));
+            f.cc.forEach((k) => RENTANG_CC[k] && aktif.push([RENTANG_CC[k].label, () => { form.querySelector(`input[name="cc[]"][value="${k}"]`).checked = false; }]));
+            if (f.transmisi) aktif.push([f.transmisi === 'otomatis' ? 'Matic' : 'Manual', () => { form.querySelector('input[name="transmisi"][value=""]').checked = true; }]);
+            if (f.harga_maks) aktif.push(['Sampai ' + rupiah(f.harga_maks), () => { harga.value = batas; labelHarga(); }]);
+
+            return aktif;
+        };
+
+        const tombolLabel = (teks, hapus) => {
+            const b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'group inline-flex items-center gap-1.5 rounded-full border border-garis bg-kertas py-1.5 pl-3 pr-2 text-xs font-medium hover:border-arang';
+            b.setAttribute('aria-label', 'Hapus filter ' + teks);
+            b.textContent = teks;
+            b.insertAdjacentHTML('beforeend', '<svg class="h-3.5 w-3.5 text-redup group-hover:text-arang" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17" /></svg>');
+            b.addEventListener('click', () => { hapus(); terapkan(); });
+
+            return b;
+        };
+
+        const terapkan = () => {
+            const f = bacaForm();
+            const aktif = label(f);
+
+            const urutan = {
+                terbaru: (a, b) => a.dataset.urutan - b.dataset.urutan,
+                termurah: (a, b) => a.dataset.harga - b.dataset.harga,
+                termahal: (a, b) => b.dataset.harga - a.dataset.harga,
+            }[f.urut];
+            let jumlah = 0;
+            [...kartu].sort(urutan).forEach((el) => {
+                el.hidden = ! cocok(el, f);
+                jumlah += el.hidden ? 0 : 1;
+                grid.append(el);
+            });
+
+            grid.hidden = jumlah === 0;
+            document.getElementById('hasil-kosong').hidden = jumlah > 0;
+            document.getElementById('jumlah-hasil').textContent = `${jumlah} motor ${aktif.length ? 'cocok dengan filter' : 'tersedia'}`;
+
+            const lencana = document.getElementById('jumlah-filter');
+            lencana.textContent = aktif.length;
+            lencana.classList.toggle('hidden', ! aktif.length);
+            document.querySelector('#hapus-atas [data-hapus-semua]').hidden = ! aktif.length;
+
+            const wadah = document.getElementById('filter-aktif');
+            wadah.replaceChildren(...aktif.map(([teks, hapus]) => tombolLabel(teks, hapus)));
+            if (aktif.length) {
+                const semua = document.createElement('button');
+                semua.type = 'button';
+                semua.dataset.hapusSemua = '';
+                semua.className = 'ml-1 text-xs font-semibold underline underline-offset-4 hover:text-abu';
+                semua.textContent = 'Hapus semua';
+                wadah.append(semua);
+            }
+            wadah.hidden = ! aktif.length;
+
+            keAlamat(f);
+        };
+
+        const labelHarga = () => {
+            const v = Number(harga.value);
+            document.getElementById('label-harga').textContent = v >= batas ? 'Semua harga' : 'Sampai ' + rupiah(v);
+        };
+
+        let jeda = null;
+        form.addEventListener('submit', (e) => { e.preventDefault(); terapkan(); });
+        form.addEventListener('change', (e) => { if (e.target.name !== 'q') terapkan(); });
+        urut.addEventListener('change', terapkan);
+        form.addEventListener('input', (e) => {
+            if (e.target.name === 'q') {
+                clearTimeout(jeda);
+                jeda = setTimeout(terapkan, 200);
+            }
+            if (e.target === harga) labelHarga();
+        });
+
+        document.addEventListener('click', (e) => {
+            if (! e.target.closest('[data-hapus-semua]')) return;
+            e.preventDefault();
+            isiForm({ q: '', kategori: [], cc: [], transmisi: '', harga_maks: null, urut: urut.value });
+            terapkan();
+        });
+
+        isiForm(dariAlamat());
+        terapkan();
+    })();
+</script>
+    </main>
+
+    <footer class="mt-24 bg-arang text-perak">
+        <div class="wadah pt-14 pb-7">
+            <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-[435px_1fr_1fr_252px] lg:gap-16">
+                <div class="flex flex-col gap-6">
+                    <a href="https://eternaledo.github.io/metro-cimahi-motor/" class="flex items-center gap-2.5 text-white">
+                        <img src="https://eternaledo.github.io/metro-cimahi-motor/images/ikon/monogram-terang.svg" alt="" width="28" height="30" class="h-[30px] w-7">
+                        <span class="flex flex-col gap-0.5 leading-none">
+                            <span class="text-[22px] font-bold tracking-[-0.01em]">METRO CIMAHI</span>
+                            <span class="text-[9px] font-medium tracking-[0.32em]">MOTOR</span>
+                        </span>
+                    </a>
+                    <p class="max-w-[310px] text-[13px] leading-[1.75]">Pilihan motor Yamaha untuk setiap perjalanan. Proyek portofolio; seluruh data showroom adalah contoh.</p>
+                </div>
+
+                <div class="flex flex-col gap-3.5 text-xs">
+                    <p class="text-[13px] font-semibold text-white">Jelajahi</p>
+                    <a href="https://eternaledo.github.io/metro-cimahi-motor/katalog/" class="hover:text-white">Katalog motor</a>
+                                            <a href="https://eternaledo.github.io/metro-cimahi-motor/katalog/?kategori%5B0%5D=maxi" class="hover:text-white">Maxi</a>
+                                            <a href="https://eternaledo.github.io/metro-cimahi-motor/katalog/?kategori%5B0%5D=classy" class="hover:text-white">Classy</a>
+                                            <a href="https://eternaledo.github.io/metro-cimahi-motor/katalog/?kategori%5B0%5D=sport" class="hover:text-white">Sport</a>
+                                            <a href="https://eternaledo.github.io/metro-cimahi-motor/katalog/?kategori%5B0%5D=moped" class="hover:text-white">Moped</a>
+                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/bandingkan/" class="hover:text-white">Bandingkan motor</a>
+                </div>
+
+                <div class="flex flex-col gap-3.5 text-xs">
+                    <p class="text-[13px] font-semibold text-white">Layanan</p>
+                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/dealer/" class="hover:text-white">Dealer kami</a>
+                    <a href="https://eternaledo.github.io/metro-cimahi-motor/artikel/" class="hover:text-white">Artikel</a>
+                    <a href="https://eternaledo.github.io/metro-cimahi-motor/#faq" class="hover:text-white">Pertanyaan umum</a>
+                </div>
+
+                <div class="flex flex-col gap-3.5 text-xs">
+                    <p class="text-[13px] font-semibold text-white">Terhubung dengan kami</p>
+                                                                <a href="mailto:halo@metrocimahimotor.example" class="hover:text-white">halo@metrocimahimotor.example</a>
+                                                                                                </div>
+            </div>
+
+            <div class="mt-12 flex flex-col gap-3 border-t border-[#3E433D] pt-6 text-[11px] sm:flex-row sm:justify-between">
+                <p>&copy; 2026 Metro Cimahi Motor. Seluruh hak cipta dilindungi.</p>
+                <p>Proyek portofolio. Harga, dealer, dan kontak hanya contoh; tidak berafiliasi dengan Yamaha.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

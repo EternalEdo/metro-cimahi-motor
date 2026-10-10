@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dealer | Metro Cimahi Motor</title>
+<link rel="icon" href="https://eternaledo.github.io/metro-cimahi-motor/images/ikon/monogram.svg" type="image/svg+xml">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preload" as="style" href="https://eternaledo.github.io/metro-cimahi-motor/build/assets/app-C-hbG7D2.css" /><link rel="modulepreload" as="script" href="https://eternaledo.github.io/metro-cimahi-motor/build/assets/app-nDZhw50O.js" /><link rel="stylesheet" href="https://eternaledo.github.io/metro-cimahi-motor/build/assets/app-C-hbG7D2.css" /><script type="module" src="https://eternaledo.github.io/metro-cimahi-motor/build/assets/app-nDZhw50O.js"></script></head>
+
+<body  data-statis  class="bg-white text-arang font-sans antialiased min-h-screen flex flex-col">
+    <a href="#isi" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-arang focus:px-4 focus:py-2 focus:text-white">Langsung ke isi</a>
+
+    
+    <header x-data="{ menu: false, cari: false, kecil: false }" @keydown.escape.window="menu = false; cari = false"
+        x-init="kecil = scrollY > 80" @scroll.window.passive="kecil = scrollY > (kecil ? 24 : 80)" :data-kecil="kecil"
+        class="kepala sticky top-0 z-30 border-b border-garis bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85">
+        <div class="kepala-baris wadah grid grid-cols-[1fr_auto] items-center gap-6 xl:grid-cols-[1fr_auto_1fr]">
+            
+            <a href="https://eternaledo.github.io/metro-cimahi-motor/" class="flex items-center gap-2.5 justify-self-start" aria-label="Metro Cimahi Motor, ke beranda">
+                <img src="https://eternaledo.github.io/metro-cimahi-motor/images/ikon/monogram.svg" alt="" width="28" height="30" class="kepala-logo">
+                <span class="flex flex-col gap-0.5 leading-none">
+                    <span class="kepala-nama font-bold tracking-[-0.01em]">METRO CIMAHI</span>
+                    <span class="kepala-sub font-medium tracking-[0.32em]">MOTOR</span>
+                </span>
+            </a>
+
+            
+            <nav class="kepala-menu hidden xl:flex items-center" aria-label="Menu utama">
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/"                         class="relative py-2 transition-colors text-abu hover:text-arang
+                            after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:bg-arang after:transition-transform after:duration-300 after:scale-x-0 hover:after:scale-x-100">
+                        Beranda
+                                            </a>
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/katalog/"                         class="relative py-2 transition-colors text-abu hover:text-arang
+                            after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:bg-arang after:transition-transform after:duration-300 after:scale-x-0 hover:after:scale-x-100">
+                        Katalog
+                                            </a>
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/bandingkan/"                         class="relative py-2 transition-colors text-abu hover:text-arang
+                            after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:bg-arang after:transition-transform after:duration-300 after:scale-x-0 hover:after:scale-x-100">
+                        Bandingkan
+                                                    <span data-jumlah-banding hidden class="angka ml-1 inline-flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-zaitun px-1 text-[10px] font-semibold text-white"></span>
+                                            </a>
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/dealer/"  aria-current="page"                         class="relative py-2 transition-colors font-semibold text-arang
+                            after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:bg-arang after:transition-transform after:duration-300 after:scale-x-100">
+                        Dealer
+                                            </a>
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/artikel/"                         class="relative py-2 transition-colors text-abu hover:text-arang
+                            after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:bg-arang after:transition-transform after:duration-300 after:scale-x-0 hover:after:scale-x-100">
+                        Artikel
+                                            </a>
+                            </nav>
+
+            
+            <div class="flex items-center justify-self-end gap-4 sm:gap-6">
+                <button type="button" @click="cari = ! cari; menu = false; $nextTick(() => cari && $refs.kolomCari.focus())" :aria-expanded="cari"
+                    aria-controls="panel-cari" aria-label="Cari motor" class="kepala-ikon grid place-items-center rounded text-arang hover:bg-kertas">
+                    <img src="https://eternaledo.github.io/metro-cimahi-motor/images/ikon/search.svg" alt="" width="20" height="20" class="h-5 w-5">
+                </button>
+
+                <a href="https://eternaledo.github.io/metro-cimahi-motor/dealer/"  class="kepala-tombol tombol hidden sm:inline-flex">
+                    Hubungi kami
+                    <img src="https://eternaledo.github.io/metro-cimahi-motor/images/ikon/message-circle-terang.svg" alt="" width="18" height="18" class="h-[18px] w-[18px]">
+                </a>
+
+                <div class="hidden">
+                                                        </div>
+
+                <button type="button" @click="menu = ! menu; cari = false" :aria-expanded="menu" aria-controls="menu-ponsel" aria-label="Buka menu"
+                    class="kepala-ikon grid place-items-center rounded hover:bg-kertas xl:hidden">
+                    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+                        <path x-show="! menu" d="M4 7h16M4 12h16M4 17h16" />
+                        <path x-cloak x-show="menu" d="M6 6l12 12M18 6L6 18" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        
+        <div id="panel-cari" x-cloak x-show="cari" x-transition.opacity class="border-t border-garis bg-white">
+            <form action="https://eternaledo.github.io/metro-cimahi-motor/katalog/" method="GET" class="wadah flex items-center gap-3 py-4" role="search">
+                <label for="cari-motor" class="sr-only">Cari nama motor</label>
+                <input x-ref="kolomCari" type="search" id="cari-motor" name="q" value="" placeholder="Cari motor, misalnya Aerox atau R15"
+                    class="isian mt-0 flex-1">
+                <button type="submit" class="tombol">Cari</button>
+            </form>
+        </div>
+
+        
+        <div id="menu-ponsel" x-cloak x-show="menu" x-transition.opacity class="border-t border-garis bg-white xl:hidden">
+            <nav class="wadah flex flex-col py-3" aria-label="Menu utama">
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/"                         class="flex items-center justify-between border-b border-garis py-3.5 text-abu">
+                        Beranda
+                                            </a>
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/katalog/"                         class="flex items-center justify-between border-b border-garis py-3.5 text-abu">
+                        Katalog
+                                            </a>
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/bandingkan/"                         class="flex items-center justify-between border-b border-garis py-3.5 text-abu">
+                        Bandingkan
+                                                    <span data-jumlah-banding hidden class="angka inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-zaitun px-1.5 text-xs text-white"></span>
+                                            </a>
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/dealer/"  aria-current="page"                         class="flex items-center justify-between border-b border-garis py-3.5 font-semibold">
+                        Dealer
+                                            </a>
+                                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/artikel/"                         class="flex items-center justify-between border-b border-garis py-3.5 text-abu">
+                        Artikel
+                                            </a>
+                                <div class="flex flex-wrap items-center gap-3 pt-5 pb-2">
+                    <a href="https://eternaledo.github.io/metro-cimahi-motor/dealer/"  class="tombol sm:hidden">
+                        Hubungi kami
+                        <img src="https://eternaledo.github.io/metro-cimahi-motor/images/ikon/message-circle-terang.svg" alt="" width="18" height="18" class="h-[18px] w-[18px]">
+                    </a>
+                                                        </div>
+            </nav>
+        </div>
+    </header>
+
+    
+    <div id="pesan-statis" class="wadah mt-5" role="status" hidden>
+        <p class="flex items-center gap-3 rounded border px-4 py-3 text-sm"></p>
+    </div>
+
+    
+    <main id="isi" class="flex-1">
+        <div class="wadah pt-12"  x-data="{ kota: '' }" >
+        <p class="penanda">Dealer resmi</p>
+        <h1 class="judul-bagian mt-4">Kunjungi dealer kami.</h1>
+
+                    <div class="mt-8 flex flex-wrap gap-2" role="group" aria-label="Saring menurut kota">
+                <button type="button" class="pil" @click="kota = ''" :aria-pressed="kota === ''" aria-pressed="true">Semua kota</button>
+                                    <button type="button" class="pil" @click="kota = 'Bandung'" :aria-pressed="kota === 'Bandung'" aria-pressed="false">Bandung</button>
+                                    <button type="button" class="pil" @click="kota = 'Bandung Barat'" :aria-pressed="kota === 'Bandung Barat'" aria-pressed="false">Bandung Barat</button>
+                                    <button type="button" class="pil" @click="kota = 'Cimahi'" :aria-pressed="kota === 'Cimahi'" aria-pressed="false">Cimahi</button>
+                            </div>
+        
+                    <ul class="mt-8 border-t border-garis">
+                                    <li  x-show="! kota || kota === 'Cimahi'"  class="grid lg:grid-cols-12 gap-x-8 gap-y-3 py-7 border-b border-garis">
+                        <div class="lg:col-span-4">
+                            <p class="text-sm text-redup">Cimahi</p>
+                            <h2 class="text-2xl font-semibold leading-tight">Metro Cimahi Motor Pusat</h2>
+                        </div>
+                        <div class="lg:col-span-5">
+                            <p class="whitespace-pre-line">Jl. Raya Contoh No. 88, Cimahi Tengah
+Kota Cimahi</p>
+                                                            <p class="mt-1 text-redup">Senin – Sabtu, 08.30 – 17.00</p>
+                                                    </div>
+                        <div class="lg:col-span-3 flex flex-wrap lg:flex-col lg:items-end gap-x-5 gap-y-1 text-sm font-medium">
+                                                                                                                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Cimahi" target="_blank" rel="noopener" class="text-arang underline underline-offset-4">Buka di peta</a>
+                                                    </div>
+                    </li>
+                                    <li  x-show="! kota || kota === 'Bandung Barat'"  class="grid lg:grid-cols-12 gap-x-8 gap-y-3 py-7 border-b border-garis">
+                        <div class="lg:col-span-4">
+                            <p class="text-sm text-redup">Bandung Barat</p>
+                            <h2 class="text-2xl font-semibold leading-tight">Metro Cimahi Motor Padalarang</h2>
+                        </div>
+                        <div class="lg:col-span-5">
+                            <p class="whitespace-pre-line">Jl. Contoh Padalarang No. 12
+Kabupaten Bandung Barat</p>
+                                                            <p class="mt-1 text-redup">Senin – Sabtu, 08.30 – 16.00</p>
+                                                    </div>
+                        <div class="lg:col-span-3 flex flex-wrap lg:flex-col lg:items-end gap-x-5 gap-y-1 text-sm font-medium">
+                                                                                                                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Bandung%20Barat" target="_blank" rel="noopener" class="text-arang underline underline-offset-4">Buka di peta</a>
+                                                    </div>
+                    </li>
+                                    <li  x-show="! kota || kota === 'Bandung'"  class="grid lg:grid-cols-12 gap-x-8 gap-y-3 py-7 border-b border-garis">
+                        <div class="lg:col-span-4">
+                            <p class="text-sm text-redup">Bandung</p>
+                            <h2 class="text-2xl font-semibold leading-tight">Metro Cimahi Motor Bandung</h2>
+                        </div>
+                        <div class="lg:col-span-5">
+                            <p class="whitespace-pre-line">Jl. Contoh Pasteur No. 45
+Kota Bandung</p>
+                                                            <p class="mt-1 text-redup">Senin – Sabtu, 09.00 – 17.00</p>
+                                                    </div>
+                        <div class="lg:col-span-3 flex flex-wrap lg:flex-col lg:items-end gap-x-5 gap-y-1 text-sm font-medium">
+                                                                                                                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Bandung" target="_blank" rel="noopener" class="text-arang underline underline-offset-4">Buka di peta</a>
+                                                    </div>
+                    </li>
+                            </ul>
+            </div>
+    </main>
+
+    <footer class="mt-24 bg-arang text-perak">
+        <div class="wadah pt-14 pb-7">
+            <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-[435px_1fr_1fr_252px] lg:gap-16">
+                <div class="flex flex-col gap-6">
+                    <a href="https://eternaledo.github.io/metro-cimahi-motor/" class="flex items-center gap-2.5 text-white">
+                        <img src="https://eternaledo.github.io/metro-cimahi-motor/images/ikon/monogram-terang.svg" alt="" width="28" height="30" class="h-[30px] w-7">
+                        <span class="flex flex-col gap-0.5 leading-none">
+                            <span class="text-[22px] font-bold tracking-[-0.01em]">METRO CIMAHI</span>
+                            <span class="text-[9px] font-medium tracking-[0.32em]">MOTOR</span>
+                        </span>
+                    </a>
+                    <p class="max-w-[310px] text-[13px] leading-[1.75]">Pilihan motor Yamaha untuk setiap perjalanan. Proyek portofolio; seluruh data showroom adalah contoh.</p>
+                </div>
+
+                <div class="flex flex-col gap-3.5 text-xs">
+                    <p class="text-[13px] font-semibold text-white">Jelajahi</p>
+                    <a href="https://eternaledo.github.io/metro-cimahi-motor/katalog/" class="hover:text-white">Katalog motor</a>
+                                            <a href="https://eternaledo.github.io/metro-cimahi-motor/katalog/?kategori%5B0%5D=maxi" class="hover:text-white">Maxi</a>
+                                            <a href="https://eternaledo.github.io/metro-cimahi-motor/katalog/?kategori%5B0%5D=classy" class="hover:text-white">Classy</a>
+                                            <a href="https://eternaledo.github.io/metro-cimahi-motor/katalog/?kategori%5B0%5D=sport" class="hover:text-white">Sport</a>
+                                            <a href="https://eternaledo.github.io/metro-cimahi-motor/katalog/?kategori%5B0%5D=moped" class="hover:text-white">Moped</a>
+                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/bandingkan/" class="hover:text-white">Bandingkan motor</a>
+                </div>
+
+                <div class="flex flex-col gap-3.5 text-xs">
+                    <p class="text-[13px] font-semibold text-white">Layanan</p>
+                                        <a href="https://eternaledo.github.io/metro-cimahi-motor/dealer/" class="hover:text-white">Dealer kami</a>
+                    <a href="https://eternaledo.github.io/metro-cimahi-motor/artikel/" class="hover:text-white">Artikel</a>
+                    <a href="https://eternaledo.github.io/metro-cimahi-motor/#faq" class="hover:text-white">Pertanyaan umum</a>
+                </div>
+
+                <div class="flex flex-col gap-3.5 text-xs">
+                    <p class="text-[13px] font-semibold text-white">Terhubung dengan kami</p>
+                                                                <a href="mailto:halo@metrocimahimotor.example" class="hover:text-white">halo@metrocimahimotor.example</a>
+                                                                                                </div>
+            </div>
+
+            <div class="mt-12 flex flex-col gap-3 border-t border-[#3E433D] pt-6 text-[11px] sm:flex-row sm:justify-between">
+                <p>&copy; 2026 Metro Cimahi Motor. Seluruh hak cipta dilindungi.</p>
+                <p>Proyek portofolio. Harga, dealer, dan kontak hanya contoh; tidak berafiliasi dengan Yamaha.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
